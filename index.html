@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قاموس البيانات الجيومكانية | المكتب الاستراتيجي لتطوير منطقة الجوف</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- مكتبة معالجة ملفات الإكسل السحابية -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        body { font-family: 'Noto Sans Arabic', sans-serif; background-color: #f1f5f9; overflow-x: hidden; height: 100vh; display: flex; flex-direction: column; }
+        
+        /* تحسين استغلال المساحة للجدول بناءً على النسخة المفضلة */
+        .table-container { 
+            flex-grow: 1;
+            overflow-y: auto; 
+            border-radius: 0.75rem;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin: 0 12px 12px 12px;
+        }
+
+        .sticky-header th { 
+            position: sticky; top: 0; 
+            background-color: #047857; /* لون هيئة الجوف الأخضر */
+            color: white;
+            z-index: 50; 
+            font-size: 10px; padding: 10px 4px;
+            text-align: right;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* نسق سطر وسطر (Zebra Striping) لسهولة التتبع */
+        tbody tr:nth-child(even) { background-color: #f8fafc; }
+        tbody tr:nth-child(odd) { background-color: #ffffff; }
+        tbody tr:hover { background-color: #ecfdf5 !important; transition: background 0.1s; }
+
+        /* نظام الاحتواء العمودي (Wrap Text) ومنع التمرير الأفقي إجبارياً */
+        table { table-layout: fixed; width: 100%; border-collapse: collapse; }
+        th, td { 
+            padding: 8px 10px; 
+            word-wrap: break-word; 
+            overflow-wrap: break-word; 
+            white-space: normal !important; 
+            vertical-align: top;
+            font-size: 0.72rem;
+            line-height: 1.4;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tab-btn { transition: all 0.2s; border-bottom: 3px solid transparent; font-weight: 700; color: #64748b; font-size: 11px; }
+        .tab-btn.active { border-color: #047857; color: #047857; background-color: #f0fdf4; }
+
+        .logo-container { height: 50px; width: auto; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .badge { padding: 2px 6px; border-radius: 4px; font-size: 9px; font-weight: 800; display: inline-block; }
+        .status-pill { font-size: 10px; padding: 4px 10px; border-radius: 20px; display: flex; align-items: center; gap: 4px; }
+        .pulse-active { width: 8px; height: 8px; border-radius: 50%; background-color: #10b981; animation: pulse 1s infinite alternate; }
+        @keyframes pulse { from { opacity: 0.4; } to { opacity: 1; } }
+    </style>
+</head>
+<body class="text-slate-800 antialiased gap-2">
+
+    <!-- Header المدمج (Compact Header) -->
+    <header class="bg-white shadow-sm border-r-4 border-emerald-700 rounded-xl m-3 py-2 px-6 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+            <img src="https://stage.maaal.com/storage/old_version/uploads/2022/06/%D8%AA%D8%B7%D9%88%D9%8A%D8%B1-%D9%85%D9%86%D8%B7%D9%82%D8%A9-%D8%A7%D9%84%D8%AC%D9%88%D9%81.jpg" 
+                 alt="شعار هيئة تطوير منطقة الجوف" class="logo-container object-contain"
+                 onerror="this.src='https://maaal.com/wp-content/uploads/2022/06/%D8%AA%D8%B7%D9%88%D9%8A%D8%B1-%D9%8من%D8%B7%D9%82%D8%A9-%D8%A7%D9%84%D8%AC%D9%88%D9%8ف.jpg'">
+            <div>
+                <h1 class="text-lg font-black text-slate-900 leading-tight">المكتب الاستراتيجي لتطوير منطقة الجوف</h1>
+                <div class="flex items-center gap-3">
+                    <p class="text-emerald-700 font-bold text-[10px]">قاموس البيانات الجيومكانية | GIS Data Dictionary</p>
+                    <span id="syncIndicator" class="status-pill bg-slate-50 text-slate-400 font-bold">
+                        <div class="pulse-active"></div> <span id="statusText">جاري الربط...</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex-grow max-w-xl relative">
+            <input type="text" id="globalSearch" placeholder="ابحث في كافة الحقول..." 
+                   class="w-full pr-10 pl-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:border-emerald-600 focus:ring-0 text-sm outline-none transition-all">
+            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </div>
+        </div>
+
+        <button onclick="reloadData()" title="تحديث البيانات" class="p-2 bg-emerald-50 text-emerald-700 rounded-lg hover:bg-emerald-100 transition-all active:scale-95 border border-emerald-100">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
+        </button>
+    </header>
+
+    <!-- Tabs and Mini Filters -->
+    <div class="mx-3 flex items-center justify-between bg-white px-2 rounded-xl shadow-sm border border-slate-200">
+        <nav class="flex">
+            <button onclick="switchTab('layers')" id="tab-layers" class="tab-btn active px-6 py-2.5">الطبقات الجيومكانية (Layers)</button>
+            <button onclick="switchTab('source')" id="tab-source" class="tab-btn px-6 py-2.5">مجلدات المصادر (Source Folder)</button>
+        </nav>
+        
+        <div class="flex items-center gap-4 px-4 border-r border-slate-100">
+            <!-- استرجاع منطقة الفلاتر المزدوجة -->
+            <div id="layerFilters" class="flex items-center gap-3">
+                <div class="flex items-center gap-2">
+                    <label class="text-[9px] font-black text-slate-400 uppercase">القطاع:</label>
+                    <select id="filterDataset" class="bg-slate-50 border border-slate-200 rounded-md px-2 py-1 text-[10px] font-bold outline-none min-w-[120px]">
+                        <option value="all">كل القطاعات</option>
+                    </select>
+                </div>
+                <div class="flex items-center gap-2 border-r pr-3 border-slate-100">
+                    <label class="text-[9px] font-black text-slate-400 uppercase">النوع:</label>
+                    <select id="filterGeometry" class="bg-slate-50 border border-slate-200 rounded-md px-2 py-1 text-[10px] font-bold outline-none min-w-[80px]">
+                        <option value="all">الكل</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="text-right">
+                <span class="text-[8px] font-black text-slate-400 uppercase">السجلات</span>
+                <div class="text-base font-black text-emerald-800 leading-none" id="stat-total">0</div>
+            </div>
+            <button onclick="exportCSV()" class="bg-slate-800 text-white px-4 py-1.5 rounded-lg text-[9px] font-black hover:bg-emerald-900 transition-all shadow-md">تصدير CSV</button>
+        </div>
+    </div>
+
+    <!-- Main Table Container -->
+    <div class="table-container shadow-inner">
+        <table id="mainTable">
+            <thead id="tableHead" class="sticky-header"></thead>
+            <tbody id="tableBody">
+                <tr><td colspan="10" class="py-32 text-center text-slate-400 italic font-bold">جاري الربط السحابي المتوازي من GitHub...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const LAYERS_URL = "https://raw.githubusercontent.com/mahmoudgis/GeneralFilestoshare/main/GIS%20Database%20-%20Data%20Dictionary%20-%20Final.xlsx";
+        const SOURCE_URL = "https://raw.githubusercontent.com/mahmoudgis/GeneralFilestoshare/main/GIS%20Source%20Folder%20-%20Data%20Dictionary.xlsx";
+        
+        let dataStore = { layers: [], source: [] };
+        let currentTab = 'layers';
+
+        window.onload = () => {
+            setupEventListeners();
+            turboLoadData();
+        };
+
+        /**
+         * محرك الربط المتوازي لضمان سرعة التحميل القصوى
+         */
+        async function turboLoadData() {
+            const indicator = document.getElementById('statusText');
+            indicator.innerText = "جاري الربط السريع...";
+            
+            try {
+                const [respLayers, respSource] = await Promise.all([
+                    fetch(LAYERS_URL + "?t=" + Date.now()),
+                    fetch(SOURCE_URL + "?t=" + Date.now())
+                ]);
+
+                const [bufLayers, bufSource] = await Promise.all([
+                    respLayers.arrayBuffer(),
+                    respSource.arrayBuffer()
+                ]);
+
+                const wbLayers = XLSX.read(new Uint8Array(bufLayers), { type: 'array' });
+                dataStore.layers = processSheet(wbLayers, "Layers", "layers");
+
+                const wbSource = XLSX.read(new Uint8Array(bufSource), { type: 'array' });
+                dataStore.source = processSheet(wbSource, "Layers", "source");
+
+                indicator.innerText = "متصل - بيانات حية";
+                document.getElementById('syncIndicator').className = "status-pill bg-emerald-50 text-emerald-600 font-bold";
+                
+                renderActiveTab();
+            } catch (e) {
+                console.error(e);
+                indicator.innerText = "خطأ في الربط";
+                document.getElementById('syncIndicator').className = "status-pill bg-red-50 text-red-600 font-bold";
+            }
+        }
+
+        function processSheet(workbook, sheetName, type) {
+            const ws = workbook.Sheets[sheetName] || workbook.Sheets[workbook.SheetNames[0]];
+            const json = XLSX.utils.sheet_to_json(ws);
+            
+            return json.map(row => {
+                const obj = {};
+                Object.keys(row).forEach(key => {
+                    const k = key.trim().toLowerCase();
+                    const val = row[key];
+                    if (type === 'layers') {
+                        if (k.includes("dataset")) obj.Dataset = val ? val.toString().trim() : "";
+                        else if (k.includes("layer")) obj.Layer = val;
+                        else if (k.includes("sources")) obj.Sources = val;
+                        else if (k === "description") obj.Description = val;
+                        else if (k.includes("وصف") || k.includes("arabic")) obj.DescriptionAr = val;
+                        else if (k.includes("coverage")) obj.Coverage = val;
+                        else if (k.includes("year")) obj.Year = val;
+                        else if (k.includes("geometry")) obj.Geometry = val;
+                        else if (k.includes("remarks")) obj.Remarks = val;
+                    } else {
+                        if (k.includes("folder")) obj.Folder = val;
+                        else if (k.includes("raster datasets")) obj.RasterDatasets = val;
+                        else if (k.includes("outputs")) obj.Outputs = val;
+                        else if (k.includes("description")) obj.Description = val;
+                        else if (k.includes("source")) obj.Source = val;
+                        else if (k.includes("year")) obj.Year = val;
+                        else if (k.includes("resolution")) obj.Resolution = val;
+                        else if (k.includes("scale")) obj.Scale = val;
+                        else if (k.includes("coverage")) obj.Coverage = val;
+                    }
+                });
+                return obj;
+            });
+        }
+
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('tab-' + tab).classList.add('active');
+            // إظهار الفلاتر في تبويب الطبقات فقط
+            document.getElementById('layerFilters').style.visibility = (tab === 'layers') ? 'visible' : 'hidden';
+            renderActiveTab();
+        }
+
+        function renderActiveTab() {
+            const head = document.getElementById('tableHead');
+            const body = document.getElementById('tableBody');
+            const searchTerm = document.getElementById('globalSearch').value.toLowerCase().trim();
+            body.innerHTML = '';
+            
+            if (currentTab === 'layers') {
+                head.innerHTML = `<tr>
+                    <th class="col-dataset" style="width:8%">Dataset</th><th class="col-layer" style="width:11%">Layer Name</th>
+                    <th class="col-sources" style="width:9%">Sources</th><th class="col-desc-en" style="width:22%">Description (EN)</th>
+                    <th class="col-desc-ar" style="width:22%">الوصف (عربي)</th><th class="col-coverage" style="width:8%">Coverage</th>
+                    <th class="col-year" style="width:6%">Year</th><th class="col-type" style="width:6%">Type</th><th class="col-remarks" style="width:8%">Remarks</th>
+                </tr>`;
+                
+                const dF = document.getElementById('filterDataset').value.toLowerCase();
+                const gF = document.getElementById('filterGeometry').value;
+                
+                const filtered = dataStore.layers.filter(item => {
+                    const rowStr = Object.values(item).join(' ').toLowerCase();
+                    const matchSearch = rowStr.includes(searchTerm);
+                    const matchD = (dF === 'all' || (item.Dataset && item.Dataset.toLowerCase() === dF));
+                    const matchG = (gF === 'all' || item.Geometry === gF);
+                    return matchSearch && matchD && matchG && item.Dataset && item.Dataset.length < 35 && item.Layer;
+                });
+
+                document.getElementById('stat-total').innerText = filtered.length;
+                filtered.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="font-bold text-slate-400 text-right">${item.Dataset || ''}</td>
+                        <td class="font-black text-slate-900 text-right">${item.Layer || ''}</td>
+                        <td class="text-[10px] text-slate-500 text-right">${item.Sources || ''}</td>
+                        <td class="text-left text-slate-600 font-medium">${item.Description || ''}</td>
+                        <td class="text-emerald-800 font-semibold text-right">${item.DescriptionAr || ''}</td>
+                        <td class="text-center">${item.Coverage || ''}</td>
+                        <td class="text-center font-bold">${item.Year || ''}</td>
+                        <td class="text-center"><span class="badge ${getGeomClass(item.Geometry)} bg-opacity-10">${item.Geometry || ''}</span></td>
+                        <td class="italic text-slate-400 text-[9px] text-right">${item.Remarks || ''}</td>
+                    `;
+                    body.appendChild(row);
+                });
+                updateLayerFilters();
+
+            } else if (currentTab === 'source') {
+                head.innerHTML = `<tr>
+                    <th style="width:12%">Folder</th><th style="width:15%">Raster Datasets</th>
+                    <th style="width:8%">Outputs</th><th style="width:25%">Description</th>
+                    <th style="width:10%">Source</th><th style="width:7%">Year</th>
+                    <th style="width:8%">Resolution</th><th style="width:15%">Coverage</th>
+                </tr>`;
+                
+                const filtered = dataStore.source.filter(item => Object.values(item).join(' ').toLowerCase().includes(searchTerm));
+                document.getElementById('stat-total').innerText = filtered.length;
+
+                filtered.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="font-bold text-emerald-700">${item.Folder || ''}</td>
+                        <td class="font-black text-slate-900">${item.RasterDatasets || ''}</td>
+                        <td class="font-bold text-red-600 text-center">${item.Outputs || ''}</td>
+                        <td class="text-slate-600 text-[11px]">${item.Description || ''}</td>
+                        <td class="text-slate-500">${item.Source || ''}</td>
+                        <td class="text-center font-bold">${item.Year || ''}</td>
+                        <td class="text-center text-blue-700 font-black">${item.Resolution || ''}</td>
+                        <td class="text-right text-[10px]">${item.Coverage || ''}</td>
+                    `;
+                    body.appendChild(row);
+                });
+            }
+        }
+
+        function updateLayerFilters() {
+            const dFilter = document.getElementById('filterDataset');
+            const gFilter = document.getElementById('filterGeometry');
+            if (dFilter.options.length > 1) return;
+
+            // تحديث فلتر القطاعات
+            const datasetMap = new Map();
+            dataStore.layers.forEach(item => {
+                if (item.Dataset && item.Dataset.length < 35) {
+                    const cleanVal = item.Dataset.trim();
+                    const lowerKey = cleanVal.toLowerCase();
+                    if (!datasetMap.has(lowerKey) || cleanVal[0] === cleanVal[0].toUpperCase()) datasetMap.set(lowerKey, cleanVal);
+                }
+            });
+            Array.from(datasetMap.values()).sort().forEach(d => dFilter.add(new Option(d, d)));
+            
+            // تحديث فلتر الأنواع (Geometry)
+            const geoms = [...new Set(dataStore.layers.map(i => i.Geometry))].filter(Boolean).sort();
+            geoms.forEach(g => gFilter.add(new Option(g, g)));
+        }
+
+        function getGeomClass(t) {
+            const type = String(t || '').toUpperCase();
+            if(type.includes('PNT')) return 'bg-amber-500 text-amber-700';
+            if(type.includes('PGN') || type.includes('PLY')) return 'bg-emerald-500 text-emerald-700';
+            if(type.includes('PLN') || type.includes('LIN')) return 'bg-blue-500 text-blue-700';
+            return 'bg-slate-500 text-slate-600';
+        }
+
+        function setupEventListeners() {
+            document.getElementById('globalSearch').addEventListener('input', renderActiveTab);
+            document.getElementById('filterDataset').addEventListener('change', renderActiveTab);
+            document.getElementById('filterGeometry').addEventListener('change', renderActiveTab);
+        }
+
+        function reloadData() { turboLoadData(); }
+
+        function exportCSV() {
+            const data = (currentTab === 'layers') ? dataStore.layers : dataStore.source;
+            if (data.length === 0) return;
+            const headers = Object.keys(data[0]);
+            const rows = [headers.join(',')];
+            data.forEach(r => rows.push(headers.map(h => `"${(r[h] || '').toString().replace(/"/g, '""')}"`).join(',')));
+            const blob = new Blob(['\uFEFF' + rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = `Jouf_GIS_${currentTab}.csv`;
+            link.click();
+        }
+    </script>
+</body>
+</html>
