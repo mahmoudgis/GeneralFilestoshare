@@ -99,42 +99,82 @@ def slugify(text: str, fallback: str = "item") -> str:
 # 1. Catalogue
 # --------------------------------------------------------------------------
 
-def fetch_catalog(limit: int | None = None) -> list[dict]:
-    """Page through the Hub search API and return every catalogue item."""
-    items: list[dict] = []
-    url = f"{HUB}/api/search/v1/collections/all/items"
-    params = {"limit": PAGE_SIZE}
-    while True:
-        payload = get_json(url, params=params)
-        features = payload.get("features") or []
-        if not features:
-            break
-        for feature in features:
-            props = feature.get("properties") or {}
-            items.append({
-                "id": feature.get("id") or props.get("id"),
-                "title": props.get("title"),
-                "type": props.get("type"),
-                "owner": props.get("owner"),
-                "snippet": props.get("snippet"),
-                "description": props.get("description"),
-                "tags": props.get("tags"),
-                "created": props.get("created"),
-                "modified": props.get("modified"),
-                "url": props.get("url"),
-                "licenseInfo": props.get("licenseInfo"),
-                "hub_page": props.get("links", {}).get("self")
-                            if isinstance(props.get("links"), dict) else None,
-            })
-        print(f"  catalogue: {len(items)} items")
-        if limit and len(items) >= limit:
-            return items[:limit]
-        nxt = next((l for l in payload.get("links", [])
-                    if isinstance(l, dict) and l.get("rel") == "next"), None)
-        if not nxt or not nxt.get("href"):
-            break
-        url, params = nxt["href"], None
-    return items
+def _next_href(payload: dict) -> str | None:
+    """Extract the rel=next link, tolerating both list and dict link shapes."""
+    links = payload.get("links")
+    if isinstance(links, list):
+        for link in links:
+            if isinstance(link, dict) and link.get("rel") == "next":
+                return link.get("href")
+    elif isinstance(links, dict):
+        nxt = links.get("next")
+        if isinstance(nxt, dict):
+            return nxt.get("href")
+        if isinstance(nxt, str):
+            return nxt
+    return None
+
+
+def _extract_item(feature: dict) -> dict:
+    props = feature.get("properties") or {}
+    links = props.get("links")
+    return {
+        "id": feature.get("id") or props.get("id"),
+        "title": props.get("title"),
+        "type": props.get("type"),
+        "owner": props.get("owner"),
+        "snippet": props.get("snippet"),
+        "description": props.get("description"),
+        "tags": props.get("tags"),
+        "created": props.get("created"),
+        "modified": props.get("modified"),
+        "url": props.get("url"),
+        "licenseInfo": props.get("licenseInfo"),
+        "hub_page": links.get("self") if isinstance(links, dict) else None,
+    }
+
+
+def fetch_catalog(limit: int | None = None,
+                  collection: str | None = None) -> list[dict]:
+    """Page through the Hub search API and return every catalogue item.
+
+    Hub sites differ in which search collections they expose, so unless the
+    caller pins one with --collection we try them in order and keep the first
+    that answers. Paging follows the rel=next link when the site provides one
+    and falls back to explicit startindex paging when it does not.
+    """
+    candidates = [collection] if collection else ["all", "dataset", "content"]
+    last_error: Exception | None = None
+    for name in candidates:
+        items: list[dict] = []
+        url = f"{HUB}/api/search/v1/collections/{name}/items"
+        params: dict | None = {"limit": PAGE_SIZE}
+        try:
+            while True:
+                payload = get_json(url, params=params)
+                features = payload.get("features") or []
+                items.extend(_extract_item(f) for f in features)
+                print(f"  catalogue [{name}]: {len(items)} items")
+                if limit and len(items) >= limit:
+                    return items[:limit]
+                if len(features) < PAGE_SIZE:
+                    break
+                href = _next_href(payload)
+                if href:
+                    url, params = href, None
+                else:                       # site omits rel=next - page by hand
+                    url = f"{HUB}/api/search/v1/collections/{name}/items"
+                    params = {"limit": PAGE_SIZE, "startindex": len(items) + 1}
+        except Exception as exc:            # noqa: BLE001 - try next collection
+            last_error = exc
+            print(f"  collection '{name}' unavailable ({exc})", file=sys.stderr)
+            continue
+        if items:
+            return items
+    if last_error:
+        raise RuntimeError(
+            f"could not read the Hub catalogue from {HUB}: {last_error}")
+    return []
 
 
 def write_catalog(items: list[dict], out: str) -> None:
@@ -274,6 +314,9 @@ def main() -> int:
                         help="stop after N catalogue items (for testing)")
     parser.add_argument("--overwrite", action="store_true",
                         help="re-download files that already exist")
+    parser.add_argument("--collection",
+                        help="pin the Hub search collection "
+                             "(default: try all, dataset, content)")
     parser.add_argument("--sleep", type=float, default=0.3,
                         help="pause between items, in seconds")
     args = parser.parse_args()
@@ -283,7 +326,7 @@ def main() -> int:
     os.makedirs(out, exist_ok=True)
 
     print(f"Harvesting {HUB}")
-    items = fetch_catalog(limit=args.limit)
+    items = fetch_catalog(limit=args.limit, collection=args.collection)
     write_catalog(items, out)
     if args.catalog_only:
         return 0
