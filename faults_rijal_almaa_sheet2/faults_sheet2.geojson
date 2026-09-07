@@ -1,0 +1,713 @@
+{
+ "type": "FeatureCollection",
+ "crs": {
+  "type": "name",
+  "properties": {
+   "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+  }
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 1,
+    "NAME": "F01",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 170.2,
+    "LENGTH_M": 11213.9,
+    "CONF": "medium",
+    "NOTE": "NNW-SSE lineament in the bb unit, SW corner of the polygon"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.022016,
+      18.104446
+     ],
+     [
+      42.02413,
+      18.093157
+     ],
+     [
+      42.033306,
+      18.045732
+     ],
+     [
+      42.040103,
+      18.005081
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 2,
+    "NAME": "F02",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 170.1,
+    "LENGTH_M": 11222.2,
+    "CONF": "medium",
+    "NOTE": "NNW-SSE lineament west of Wadi ash Shuqayq, SW corner"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.052442,
+      18.107886
+     ],
+     [
+      42.055397,
+      18.093157
+     ],
+     [
+      42.064233,
+      18.045732
+     ],
+     [
+      42.070691,
+      18.008469
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 3,
+    "NAME": "F03",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 169.9,
+    "LENGTH_M": 9185.1,
+    "CONF": "low",
+    "NOTE": "Short lineament near Jabal Lababah, SW corner"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.016313,
+      18.082995
+     ],
+     [
+      42.022091,
+      18.054201
+     ],
+     [
+      42.027529,
+      18.0271
+     ],
+     [
+      42.031607,
+      18.001694
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 4,
+    "NAME": "F04",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 169.6,
+    "LENGTH_M": 40187.7,
+    "CONF": "high",
+    "NOTE": "Long fault along the western margin of the as unit"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.070691,
+      18.409892
+     ],
+     [
+      42.083265,
+      18.345528
+     ],
+     [
+      42.09618,
+      18.279472
+     ],
+     [
+      42.108415,
+      18.218496
+     ],
+     [
+      42.11997,
+      18.160908
+     ],
+     [
+      42.129486,
+      18.110095
+     ],
+     [
+      42.137643,
+      18.064363
+     ],
+     [
+      42.139208,
+      18.054397
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 5,
+    "NAME": "F05",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 169.7,
+    "LENGTH_M": 39530.9,
+    "CONF": "high",
+    "NOTE": "Fault east of F04, cutting the as / bb contact"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.089705,
+      18.404133
+     ],
+     [
+      42.099579,
+      18.357385
+     ],
+     [
+      42.113173,
+      18.293022
+     ],
+     [
+      42.125408,
+      18.23374
+     ],
+     [
+      42.136963,
+      18.177846
+     ],
+     [
+      42.146479,
+      18.125339
+     ],
+     [
+      42.153956,
+      18.07622
+     ],
+     [
+      42.156863,
+      18.054489
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 6,
+    "NAME": "F06",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 170.5,
+    "LENGTH_M": 34537.2,
+    "CONF": "high",
+    "NOTE": "Western margin of the cross-hatched band inside the as unit"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.149192,
+      18.365588
+     ],
+     [
+      42.153956,
+      18.340447
+     ],
+     [
+      42.166191,
+      18.276084
+     ],
+     [
+      42.177746,
+      18.211721
+     ],
+     [
+      42.187942,
+      18.155827
+     ],
+     [
+      42.196438,
+      18.10332
+     ],
+     [
+      42.203235,
+      18.059282
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 7,
+    "NAME": "F07",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 170.6,
+    "LENGTH_M": 33799.0,
+    "CONF": "high",
+    "NOTE": "Eastern margin of the cross-hatched band inside the as unit"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.164483,
+      18.355734
+     ],
+     [
+      42.16755,
+      18.340447
+     ],
+     [
+      42.179785,
+      18.275407
+     ],
+     [
+      42.19134,
+      18.211721
+     ],
+     [
+      42.201536,
+      18.154133
+     ],
+     [
+      42.210033,
+      18.099932
+     ],
+     [
+      42.21683,
+      18.055894
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 8,
+    "NAME": "F08",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 170.4,
+    "LENGTH_M": 36521.2,
+    "CONF": "high",
+    "NOTE": "Fault on the eastern margin of the as unit against bt"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.189959,
+      18.383126
+     ],
+     [
+      42.198138,
+      18.340447
+     ],
+     [
+      42.210372,
+      18.276762
+     ],
+     [
+      42.221928,
+      18.215108
+     ],
+     [
+      42.232123,
+      18.15752
+     ],
+     [
+      42.24062,
+      18.10332
+     ],
+     [
+      42.247417,
+      18.059282
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 9,
+    "NAME": "F09",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 170.8,
+    "LENGTH_M": 36354.4,
+    "CONF": "medium",
+    "NOTE": "NNW-SSE fault through the jt / bt units"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.207254,
+      18.385399
+     ],
+     [
+      42.215131,
+      18.343835
+     ],
+     [
+      42.227026,
+      18.280149
+     ],
+     [
+      42.238241,
+      18.218496
+     ],
+     [
+      42.247757,
+      18.160908
+     ],
+     [
+      42.255914,
+      18.106707
+     ],
+     [
+      42.262031,
+      18.062669
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 10,
+    "NAME": "F10",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 171.2,
+    "LENGTH_M": 34640.5,
+    "CONF": "medium",
+    "NOTE": "NNW-SSE fault east of F09"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.226673,
+      18.380636
+     ],
+     [
+      42.232803,
+      18.347222
+     ],
+     [
+      42.243679,
+      18.285569
+     ],
+     [
+      42.254214,
+      18.225271
+     ],
+     [
+      42.26339,
+      18.169377
+     ],
+     [
+      42.271207,
+      18.11687
+     ],
+     [
+      42.276985,
+      18.072832
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 11,
+    "NAME": "F11",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 171.1,
+    "LENGTH_M": 32138.6,
+    "CONF": "medium",
+    "NOTE": "NNW-SSE fault west of Wadi al Marabi"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.254674,
+      18.365116
+     ],
+     [
+      42.257613,
+      18.348916
+     ],
+     [
+      42.268488,
+      18.28794
+     ],
+     [
+      42.279024,
+      18.228659
+     ],
+     [
+      42.28786,
+      18.174458
+     ],
+     [
+      42.296017,
+      18.123645
+     ],
+     [
+      42.301794,
+      18.079607
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 12,
+    "NAME": "F12",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 171.2,
+    "LENGTH_M": 30146.9,
+    "CONF": "medium",
+    "NOTE": "NNW-SSE fault in the bt unit, Wadi al Marabi corridor"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.276335,
+      18.354321
+     ],
+     [
+      42.276985,
+      18.35061
+     ],
+     [
+      42.287181,
+      18.291328
+     ],
+     [
+      42.297376,
+      18.232046
+     ],
+     [
+      42.305873,
+      18.179539
+     ],
+     [
+      42.31369,
+      18.13042
+     ],
+     [
+      42.319807,
+      18.086382
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 13,
+    "NAME": "F13",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 171.4,
+    "LENGTH_M": 26089.7,
+    "CONF": "medium",
+    "NOTE": "NNW-SSE fault east of Wadi al Marabi"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.307359,
+      18.328522
+     ],
+     [
+      42.31369,
+      18.292344
+     ],
+     [
+      42.323206,
+      18.235434
+     ],
+     [
+      42.331362,
+      18.184621
+     ],
+     [
+      42.338839,
+      18.137195
+     ],
+     [
+      42.344277,
+      18.096545
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 14,
+    "NAME": "F17",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 171.1,
+    "LENGTH_M": 10675.5,
+    "CONF": "low",
+    "NOTE": "Short lineament in the central bt unit"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.276305,
+      18.33706
+     ],
+     [
+      42.281743,
+      18.304878
+     ],
+     [
+      42.287181,
+      18.272696
+     ],
+     [
+      42.291939,
+      18.242209
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 15,
+    "NAME": "F18",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 169.6,
+    "LENGTH_M": 9190.8,
+    "CONF": "low",
+    "NOTE": "Short lineament in the south-central part of the polygon"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.242319,
+      18.082995
+     ],
+     [
+      42.248437,
+      18.052507
+     ],
+     [
+      42.253874,
+      18.025407
+     ],
+     [
+      42.257953,
+      18.001694
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 16,
+    "NAME": "F19",
+    "FEATURE": "Fault / lineament",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 168.4,
+    "LENGTH_M": 9998.6,
+    "CONF": "medium",
+    "NOTE": "NNW-SSE lineament in the SW part, bb / Qal contact zone"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.051998,
+      18.093157
+     ],
+     [
+      42.059475,
+      18.059282
+     ],
+     [
+      42.065593,
+      18.032182
+     ],
+     [
+      42.07103,
+      18.005081
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 17,
+    "NAME": "F20",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 169.8,
+    "LENGTH_M": 13394.9,
+    "CONF": "low",
+    "NOTE": "Short lineament between F04 and F05, northern polygon"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.077828,
+      18.398035
+     ],
+     [
+      42.085984,
+      18.357385
+     ],
+     [
+      42.093461,
+      18.316734
+     ],
+     [
+      42.100258,
+      18.279472
+     ]
+    ]
+   }
+  }
+ ]
+}
