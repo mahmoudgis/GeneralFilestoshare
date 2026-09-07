@@ -1,0 +1,375 @@
+{
+ "type": "FeatureCollection",
+ "crs": {
+  "type": "name",
+  "properties": {
+   "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+  }
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 1,
+    "NAME": "W01",
+    "FEATURE": "Fault / lineament",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 161.3,
+    "LENGTH_M": 5802.0,
+    "CONF": "low",
+    "NOTE": "Lineament SE of Jabal Lababah, western strip"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.047211,
+      17.991956
+     ],
+     [
+      42.052042,
+      17.979316
+     ],
+     [
+      42.056873,
+      17.966676
+     ],
+     [
+      42.061265,
+      17.954036
+     ],
+     [
+      42.064778,
+      17.942545
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 2,
+    "NAME": "W02",
+    "FEATURE": "Fault / lineament",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 162.7,
+    "LENGTH_M": 6559.3,
+    "CONF": "low",
+    "NOTE": "Lineament in the gmm granite, central western strip"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.025253,
+      17.925308
+     ],
+     [
+      42.030523,
+      17.91037
+     ],
+     [
+      42.035793,
+      17.894972
+     ],
+     [
+      42.040184,
+      17.880493
+     ],
+     [
+      42.043698,
+      17.869002
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 3,
+    "NAME": "W03",
+    "FEATURE": "Fault / lineament",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 161.4,
+    "LENGTH_M": 5260.8,
+    "CONF": "low",
+    "NOTE": "Lineament in the Qrs cover near Wadi Jawwah, SW of the strip"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.007686,
+      17.863256
+     ],
+     [
+      42.013395,
+      17.847169
+     ],
+     [
+      42.019104,
+      17.831081
+     ],
+     [
+      42.023569,
+      17.818425
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 4,
+    "NAME": "S01",
+    "FEATURE": "Fault / lineament",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 164.6,
+    "LENGTH_M": 12326.5,
+    "CONF": "medium",
+    "NOTE": "NNW-SSE lineament on the western edge of the salient"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.241546,
+      17.997702
+     ],
+     [
+      42.248134,
+      17.975869
+     ],
+     [
+      42.254502,
+      17.954036
+     ],
+     [
+      42.26065,
+      17.932203
+     ],
+     [
+      42.266798,
+      17.91037
+     ],
+     [
+      42.272508,
+      17.890835
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 5,
+    "NAME": "S02",
+    "FEATURE": "Fault / lineament",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 163.9,
+    "LENGTH_M": 12371.0,
+    "CONF": "high",
+    "NOTE": "NNW-SSE fault bounding the as unit west of the hatched band"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.255819,
+      17.997702
+     ],
+     [
+      42.262846,
+      17.975869
+     ],
+     [
+      42.269653,
+      17.954036
+     ],
+     [
+      42.276241,
+      17.932203
+     ],
+     [
+      42.282609,
+      17.91037
+     ],
+     [
+      42.288318,
+      17.890835
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 6,
+    "NAME": "S03",
+    "FEATURE": "Fault / lineament",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 164.1,
+    "LENGTH_M": 12358.8,
+    "CONF": "high",
+    "NOTE": "Western margin of the cross-hatched band, Jabal al Hamra"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.27119,
+      17.997702
+     ],
+     [
+      42.278217,
+      17.975869
+     ],
+     [
+      42.285024,
+      17.954036
+     ],
+     [
+      42.291612,
+      17.932203
+     ],
+     [
+      42.29776,
+      17.91037
+     ],
+     [
+      42.30325,
+      17.890835
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 7,
+    "NAME": "S04",
+    "FEATURE": "Fault / lineament",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 163.8,
+    "LENGTH_M": 9716.0,
+    "CONF": "medium",
+    "NOTE": "Eastern margin of the cross-hatched band"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.287659,
+      17.997702
+     ],
+     [
+      42.294686,
+      17.975869
+     ],
+     [
+      42.301274,
+      17.954725
+     ],
+     [
+      42.307642,
+      17.933582
+     ],
+     [
+      42.313351,
+      17.913817
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 8,
+    "NAME": "S05",
+    "FEATURE": "Fault / lineament",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 163.7,
+    "LENGTH_M": 6557.0,
+    "CONF": "medium",
+    "NOTE": "NNW-SSE fault in the as unit, central salient"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.304128,
+      17.997702
+     ],
+     [
+      42.310935,
+      17.976558
+     ],
+     [
+      42.317303,
+      17.955644
+     ],
+     [
+      42.321562,
+      17.941117
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 9,
+    "NAME": "S06",
+    "FEATURE": "Fault / lineament",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 163.1,
+    "LENGTH_M": 4000.7,
+    "CONF": "medium",
+    "NOTE": "NNW-SSE fault east of S05, narrowing part of the salient"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.320597,
+      17.996553
+     ],
+     [
+      42.327185,
+      17.976328
+     ],
+     [
+      42.331601,
+      17.962131
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 10,
+    "NAME": "S07",
+    "FEATURE": "Fault / lineament",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 162.8,
+    "LENGTH_M": 1716.1,
+    "CONF": "low",
+    "NOTE": "Short lineament close to the eastern red boundary"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.337066,
+      17.996553
+     ],
+     [
+      42.341875,
+      17.981813
+     ]
+    ]
+   }
+  }
+ ]
+}

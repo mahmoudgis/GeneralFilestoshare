@@ -1,0 +1,1514 @@
+{
+ "type": "FeatureCollection",
+ "crs": {
+  "type": "name",
+  "properties": {
+   "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+  }
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 1,
+    "SHEET": "41E",
+    "NAME": "F01",
+    "TREND": "N-S",
+    "STRIKE_DEG": 173.5,
+    "LENGTH_M": 2765.8,
+    "CONF": "medium"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.894181,
+      18.019828
+     ],
+     [
+      41.895043,
+      18.013868
+     ],
+     [
+      41.895905,
+      18.0066
+     ],
+     [
+      41.896624,
+      17.999331
+     ],
+     [
+      41.897126,
+      17.995116
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 2,
+    "SHEET": "41E",
+    "NAME": "F02",
+    "TREND": "N-S",
+    "STRIKE_DEG": 173.2,
+    "LENGTH_M": 2946.8,
+    "CONF": "medium"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.90079,
+      18.021428
+     ],
+     [
+      41.901796,
+      18.014595
+     ],
+     [
+      41.902658,
+      18.007327
+     ],
+     [
+      41.90352,
+      18.000058
+     ],
+     [
+      41.904095,
+      17.995116
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 3,
+    "SHEET": "41E",
+    "NAME": "F03",
+    "TREND": "N-S",
+    "STRIKE_DEG": 174.8,
+    "LENGTH_M": 2773.4,
+    "CONF": "high"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.911424,
+      18.019955
+     ],
+     [
+      41.911997,
+      18.014595
+     ],
+     [
+      41.912572,
+      18.00878
+     ],
+     [
+      41.913147,
+      18.002602
+     ],
+     [
+      41.913793,
+      17.995116
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 4,
+    "SHEET": "41E",
+    "NAME": "F04",
+    "TREND": "N-S",
+    "STRIKE_DEG": 172.0,
+    "LENGTH_M": 2661.0,
+    "CONF": "medium"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.920187,
+      18.018811
+     ],
+     [
+      41.921049,
+      18.012778
+     ],
+     [
+      41.921983,
+      18.0066
+     ],
+     [
+      41.922917,
+      18.000058
+     ],
+     [
+      41.923707,
+      17.995116
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 5,
+    "SHEET": "41E",
+    "NAME": "F05",
+    "TREND": "N-S",
+    "STRIKE_DEG": 176.3,
+    "LENGTH_M": 3093.8,
+    "CONF": "high"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.927514,
+      18.022881
+     ],
+     [
+      41.928089,
+      18.015685
+     ],
+     [
+      41.928592,
+      18.008417
+     ],
+     [
+      41.929023,
+      18.001512
+     ],
+     [
+      41.929382,
+      17.995116
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 6,
+    "SHEET": "41E",
+    "NAME": "F06",
+    "TREND": "N-S",
+    "STRIKE_DEG": 175.7,
+    "LENGTH_M": 3826.3,
+    "CONF": "medium"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.93283,
+      18.029423
+     ],
+     [
+      41.933693,
+      18.0215
+     ],
+     [
+      41.934411,
+      18.013141
+     ],
+     [
+      41.935057,
+      18.004419
+     ],
+     [
+      41.93556,
+      17.995116
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 7,
+    "SHEET": "41E",
+    "NAME": "F07",
+    "TREND": "N-S",
+    "STRIKE_DEG": 2.0,
+    "LENGTH_M": 9417.7,
+    "CONF": "high"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.948572,
+      18.079758
+     ],
+     [
+      41.948204,
+      18.070563
+     ],
+     [
+      41.947773,
+      18.058933
+     ],
+     [
+      41.947198,
+      18.046577
+     ],
+     [
+      41.946624,
+      18.033493
+     ],
+     [
+      41.946121,
+      18.019683
+     ],
+     [
+      41.945761,
+      18.0066
+     ],
+     [
+      41.945474,
+      17.995116
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 8,
+    "SHEET": "41E",
+    "NAME": "F08",
+    "TREND": "N-S",
+    "STRIKE_DEG": 175.8,
+    "LENGTH_M": 6920.9,
+    "CONF": "high"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.953793,
+      18.086117
+     ],
+     [
+      41.95431,
+      18.080738
+     ],
+     [
+      41.955316,
+      18.069109
+     ],
+     [
+      41.956322,
+      18.056752
+     ],
+     [
+      41.957328,
+      18.043669
+     ],
+     [
+      41.958118,
+      18.03204
+     ],
+     [
+      41.958549,
+      18.024044
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 9,
+    "SHEET": "41E",
+    "NAME": "F09",
+    "TREND": "N-S",
+    "STRIKE_DEG": 175.8,
+    "LENGTH_M": 4295.0,
+    "CONF": "medium"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.964009,
+      18.091496
+     ],
+     [
+      41.964871,
+      18.081465
+     ],
+     [
+      41.965733,
+      18.071289
+     ],
+     [
+      41.966451,
+      18.061114
+     ],
+     [
+      41.966954,
+      18.052973
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 10,
+    "SHEET": "41E",
+    "NAME": "F10",
+    "TREND": "N-S",
+    "STRIKE_DEG": 174.6,
+    "LENGTH_M": 4579.2,
+    "CONF": "medium"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.973204,
+      18.091205
+     ],
+     [
+      41.974425,
+      18.080738
+     ],
+     [
+      41.975503,
+      18.070563
+     ],
+     [
+      41.976509,
+      18.060023
+     ],
+     [
+      41.977299,
+      18.050211
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 11,
+    "SHEET": "41E",
+    "NAME": "F11",
+    "TREND": "N-S",
+    "STRIKE_DEG": 175.1,
+    "LENGTH_M": 4316.1,
+    "CONF": "medium"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.982687,
+      18.091787
+     ],
+     [
+      41.983764,
+      18.081465
+     ],
+     [
+      41.984698,
+      18.071653
+     ],
+     [
+      41.98556,
+      18.06184
+     ],
+     [
+      41.986207,
+      18.053118
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 12,
+    "SHEET": "41E",
+    "NAME": "F12",
+    "TREND": "N-S",
+    "STRIKE_DEG": 175.8,
+    "LENGTH_M": 4036.2,
+    "CONF": "low"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.992026,
+      18.090624
+     ],
+     [
+      41.99296,
+      18.080738
+     ],
+     [
+      41.99375,
+      18.071289
+     ],
+     [
+      41.994397,
+      18.062567
+     ],
+     [
+      41.994828,
+      18.054427
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 13,
+    "SHEET": "42E-north",
+    "NAME": "F01",
+    "TREND": "N-S",
+    "STRIKE_DEG": 170.2,
+    "LENGTH_M": 11213.9,
+    "CONF": "medium"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.022016,
+      18.104446
+     ],
+     [
+      42.02413,
+      18.093157
+     ],
+     [
+      42.033306,
+      18.045732
+     ],
+     [
+      42.040103,
+      18.005081
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 14,
+    "SHEET": "42E-north",
+    "NAME": "F02",
+    "TREND": "N-S",
+    "STRIKE_DEG": 170.1,
+    "LENGTH_M": 11222.2,
+    "CONF": "medium"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.052442,
+      18.107886
+     ],
+     [
+      42.055397,
+      18.093157
+     ],
+     [
+      42.064233,
+      18.045732
+     ],
+     [
+      42.070691,
+      18.008469
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 15,
+    "SHEET": "42E-north",
+    "NAME": "F03",
+    "TREND": "N-S",
+    "STRIKE_DEG": 169.9,
+    "LENGTH_M": 9185.1,
+    "CONF": "low"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.016313,
+      18.082995
+     ],
+     [
+      42.022091,
+      18.054201
+     ],
+     [
+      42.027529,
+      18.0271
+     ],
+     [
+      42.031607,
+      18.001694
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 16,
+    "SHEET": "42E-north",
+    "NAME": "F04",
+    "TREND": "N-S",
+    "STRIKE_DEG": 169.6,
+    "LENGTH_M": 40187.7,
+    "CONF": "high"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.070691,
+      18.409892
+     ],
+     [
+      42.083265,
+      18.345528
+     ],
+     [
+      42.09618,
+      18.279472
+     ],
+     [
+      42.108415,
+      18.218496
+     ],
+     [
+      42.11997,
+      18.160908
+     ],
+     [
+      42.129486,
+      18.110095
+     ],
+     [
+      42.137643,
+      18.064363
+     ],
+     [
+      42.139208,
+      18.054397
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 17,
+    "SHEET": "42E-north",
+    "NAME": "F05",
+    "TREND": "N-S",
+    "STRIKE_DEG": 169.7,
+    "LENGTH_M": 39530.9,
+    "CONF": "high"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.089705,
+      18.404133
+     ],
+     [
+      42.099579,
+      18.357385
+     ],
+     [
+      42.113173,
+      18.293022
+     ],
+     [
+      42.125408,
+      18.23374
+     ],
+     [
+      42.136963,
+      18.177846
+     ],
+     [
+      42.146479,
+      18.125339
+     ],
+     [
+      42.153956,
+      18.07622
+     ],
+     [
+      42.156863,
+      18.054489
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 18,
+    "SHEET": "42E-north",
+    "NAME": "F06",
+    "TREND": "N-S",
+    "STRIKE_DEG": 170.5,
+    "LENGTH_M": 34537.2,
+    "CONF": "high"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.149192,
+      18.365588
+     ],
+     [
+      42.153956,
+      18.340447
+     ],
+     [
+      42.166191,
+      18.276084
+     ],
+     [
+      42.177746,
+      18.211721
+     ],
+     [
+      42.187942,
+      18.155827
+     ],
+     [
+      42.196438,
+      18.10332
+     ],
+     [
+      42.203235,
+      18.059282
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 19,
+    "SHEET": "42E-north",
+    "NAME": "F07",
+    "TREND": "N-S",
+    "STRIKE_DEG": 170.6,
+    "LENGTH_M": 33799.0,
+    "CONF": "high"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.164483,
+      18.355734
+     ],
+     [
+      42.16755,
+      18.340447
+     ],
+     [
+      42.179785,
+      18.275407
+     ],
+     [
+      42.19134,
+      18.211721
+     ],
+     [
+      42.201536,
+      18.154133
+     ],
+     [
+      42.210033,
+      18.099932
+     ],
+     [
+      42.21683,
+      18.055894
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 20,
+    "SHEET": "42E-north",
+    "NAME": "F08",
+    "TREND": "N-S",
+    "STRIKE_DEG": 170.4,
+    "LENGTH_M": 36521.2,
+    "CONF": "high"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.189959,
+      18.383126
+     ],
+     [
+      42.198138,
+      18.340447
+     ],
+     [
+      42.210372,
+      18.276762
+     ],
+     [
+      42.221928,
+      18.215108
+     ],
+     [
+      42.232123,
+      18.15752
+     ],
+     [
+      42.24062,
+      18.10332
+     ],
+     [
+      42.247417,
+      18.059282
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 21,
+    "SHEET": "42E-north",
+    "NAME": "F09",
+    "TREND": "N-S",
+    "STRIKE_DEG": 170.8,
+    "LENGTH_M": 36354.4,
+    "CONF": "medium"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.207254,
+      18.385399
+     ],
+     [
+      42.215131,
+      18.343835
+     ],
+     [
+      42.227026,
+      18.280149
+     ],
+     [
+      42.238241,
+      18.218496
+     ],
+     [
+      42.247757,
+      18.160908
+     ],
+     [
+      42.255914,
+      18.106707
+     ],
+     [
+      42.262031,
+      18.062669
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 22,
+    "SHEET": "42E-north",
+    "NAME": "F10",
+    "TREND": "N-S",
+    "STRIKE_DEG": 171.2,
+    "LENGTH_M": 34640.5,
+    "CONF": "medium"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.226673,
+      18.380636
+     ],
+     [
+      42.232803,
+      18.347222
+     ],
+     [
+      42.243679,
+      18.285569
+     ],
+     [
+      42.254214,
+      18.225271
+     ],
+     [
+      42.26339,
+      18.169377
+     ],
+     [
+      42.271207,
+      18.11687
+     ],
+     [
+      42.276985,
+      18.072832
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 23,
+    "SHEET": "42E-north",
+    "NAME": "F11",
+    "TREND": "N-S",
+    "STRIKE_DEG": 171.1,
+    "LENGTH_M": 32138.6,
+    "CONF": "medium"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.254674,
+      18.365116
+     ],
+     [
+      42.257613,
+      18.348916
+     ],
+     [
+      42.268488,
+      18.28794
+     ],
+     [
+      42.279024,
+      18.228659
+     ],
+     [
+      42.28786,
+      18.174458
+     ],
+     [
+      42.296017,
+      18.123645
+     ],
+     [
+      42.301794,
+      18.079607
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 24,
+    "SHEET": "42E-north",
+    "NAME": "F12",
+    "TREND": "N-S",
+    "STRIKE_DEG": 171.2,
+    "LENGTH_M": 30146.9,
+    "CONF": "medium"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.276335,
+      18.354321
+     ],
+     [
+      42.276985,
+      18.35061
+     ],
+     [
+      42.287181,
+      18.291328
+     ],
+     [
+      42.297376,
+      18.232046
+     ],
+     [
+      42.305873,
+      18.179539
+     ],
+     [
+      42.31369,
+      18.13042
+     ],
+     [
+      42.319807,
+      18.086382
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 25,
+    "SHEET": "42E-north",
+    "NAME": "F13",
+    "TREND": "N-S",
+    "STRIKE_DEG": 171.4,
+    "LENGTH_M": 26089.7,
+    "CONF": "medium"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.307359,
+      18.328522
+     ],
+     [
+      42.31369,
+      18.292344
+     ],
+     [
+      42.323206,
+      18.235434
+     ],
+     [
+      42.331362,
+      18.184621
+     ],
+     [
+      42.338839,
+      18.137195
+     ],
+     [
+      42.344277,
+      18.096545
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 26,
+    "SHEET": "42E-north",
+    "NAME": "F17",
+    "TREND": "N-S",
+    "STRIKE_DEG": 171.1,
+    "LENGTH_M": 10675.5,
+    "CONF": "low"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.276305,
+      18.33706
+     ],
+     [
+      42.281743,
+      18.304878
+     ],
+     [
+      42.287181,
+      18.272696
+     ],
+     [
+      42.291939,
+      18.242209
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 27,
+    "SHEET": "42E-north",
+    "NAME": "F18",
+    "TREND": "N-S",
+    "STRIKE_DEG": 169.6,
+    "LENGTH_M": 9190.8,
+    "CONF": "low"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.242319,
+      18.082995
+     ],
+     [
+      42.248437,
+      18.052507
+     ],
+     [
+      42.253874,
+      18.025407
+     ],
+     [
+      42.257953,
+      18.001694
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 28,
+    "SHEET": "42E-north",
+    "NAME": "F19",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 168.4,
+    "LENGTH_M": 9998.6,
+    "CONF": "medium"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.051998,
+      18.093157
+     ],
+     [
+      42.059475,
+      18.059282
+     ],
+     [
+      42.065593,
+      18.032182
+     ],
+     [
+      42.07103,
+      18.005081
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 29,
+    "SHEET": "42E-north",
+    "NAME": "F20",
+    "TREND": "N-S",
+    "STRIKE_DEG": 169.8,
+    "LENGTH_M": 13394.9,
+    "CONF": "low"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.077828,
+      18.398035
+     ],
+     [
+      42.085984,
+      18.357385
+     ],
+     [
+      42.093461,
+      18.316734
+     ],
+     [
+      42.100258,
+      18.279472
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 30,
+    "SHEET": "42E-south",
+    "NAME": "W01",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 161.3,
+    "LENGTH_M": 5802.0,
+    "CONF": "low"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.047211,
+      17.991956
+     ],
+     [
+      42.052042,
+      17.979316
+     ],
+     [
+      42.056873,
+      17.966676
+     ],
+     [
+      42.061265,
+      17.954036
+     ],
+     [
+      42.064778,
+      17.942545
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 31,
+    "SHEET": "42E-south",
+    "NAME": "W02",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 162.7,
+    "LENGTH_M": 6559.3,
+    "CONF": "low"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.025253,
+      17.925308
+     ],
+     [
+      42.030523,
+      17.91037
+     ],
+     [
+      42.035793,
+      17.894972
+     ],
+     [
+      42.040184,
+      17.880493
+     ],
+     [
+      42.043698,
+      17.869002
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 32,
+    "SHEET": "42E-south",
+    "NAME": "W03",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 161.4,
+    "LENGTH_M": 5260.8,
+    "CONF": "low"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.007686,
+      17.863256
+     ],
+     [
+      42.013395,
+      17.847169
+     ],
+     [
+      42.019104,
+      17.831081
+     ],
+     [
+      42.023569,
+      17.818425
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 33,
+    "SHEET": "42E-south",
+    "NAME": "S01",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 164.6,
+    "LENGTH_M": 12326.5,
+    "CONF": "medium"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.241546,
+      17.997702
+     ],
+     [
+      42.248134,
+      17.975869
+     ],
+     [
+      42.254502,
+      17.954036
+     ],
+     [
+      42.26065,
+      17.932203
+     ],
+     [
+      42.266798,
+      17.91037
+     ],
+     [
+      42.272508,
+      17.890835
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 34,
+    "SHEET": "42E-south",
+    "NAME": "S02",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 163.9,
+    "LENGTH_M": 12371.0,
+    "CONF": "high"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.255819,
+      17.997702
+     ],
+     [
+      42.262846,
+      17.975869
+     ],
+     [
+      42.269653,
+      17.954036
+     ],
+     [
+      42.276241,
+      17.932203
+     ],
+     [
+      42.282609,
+      17.91037
+     ],
+     [
+      42.288318,
+      17.890835
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 35,
+    "SHEET": "42E-south",
+    "NAME": "S03",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 164.1,
+    "LENGTH_M": 12358.8,
+    "CONF": "high"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.27119,
+      17.997702
+     ],
+     [
+      42.278217,
+      17.975869
+     ],
+     [
+      42.285024,
+      17.954036
+     ],
+     [
+      42.291612,
+      17.932203
+     ],
+     [
+      42.29776,
+      17.91037
+     ],
+     [
+      42.30325,
+      17.890835
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 36,
+    "SHEET": "42E-south",
+    "NAME": "S04",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 163.8,
+    "LENGTH_M": 9716.0,
+    "CONF": "medium"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.287659,
+      17.997702
+     ],
+     [
+      42.294686,
+      17.975869
+     ],
+     [
+      42.301274,
+      17.954725
+     ],
+     [
+      42.307642,
+      17.933582
+     ],
+     [
+      42.313351,
+      17.913817
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 37,
+    "SHEET": "42E-south",
+    "NAME": "S05",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 163.7,
+    "LENGTH_M": 6557.0,
+    "CONF": "medium"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.304128,
+      17.997702
+     ],
+     [
+      42.310935,
+      17.976558
+     ],
+     [
+      42.317303,
+      17.955644
+     ],
+     [
+      42.321562,
+      17.941117
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 38,
+    "SHEET": "42E-south",
+    "NAME": "S06",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 163.1,
+    "LENGTH_M": 4000.7,
+    "CONF": "medium"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.320597,
+      17.996553
+     ],
+     [
+      42.327185,
+      17.976328
+     ],
+     [
+      42.331601,
+      17.962131
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 39,
+    "SHEET": "42E-south",
+    "NAME": "S07",
+    "TREND": "NNW-SSE",
+    "STRIKE_DEG": 162.8,
+    "LENGTH_M": 1716.1,
+    "CONF": "low"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      42.337066,
+      17.996553
+     ],
+     [
+      42.341875,
+      17.981813
+     ]
+    ]
+   }
+  }
+ ]
+}
