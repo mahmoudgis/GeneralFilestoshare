@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1907" height="1919" viewBox="0 0 1907 1919">
+<rect width="100%%" height="100%%" fill="#fdfaf5"/>
+<line x1="175.0" y1="62.0" x2="175.0" y2="1560.0" stroke="#e8863c" stroke-width="1.2"/>
+<text x="175.0" y="1594.0" font-size="26" text-anchor="middle" fill="#8a5a2b">41°53'</text>
+<line x1="407.0" y1="62.0" x2="407.0" y2="1560.0" stroke="#e8863c" stroke-width="1.2"/>
+<text x="407.0" y="1594.0" font-size="26" text-anchor="middle" fill="#8a5a2b">41°54'</text>
+<line x1="639.0" y1="62.0" x2="639.0" y2="1560.0" stroke="#e8863c" stroke-width="1.2"/>
+<text x="639.0" y="1594.0" font-size="26" text-anchor="middle" fill="#8a5a2b">41°55'</text>
+<line x1="871.0" y1="62.0" x2="871.0" y2="1560.0" stroke="#e8863c" stroke-width="1.2"/>
+<text x="871.0" y="1594.0" font-size="26" text-anchor="middle" fill="#8a5a2b">41°56'</text>
+<line x1="1103.0" y1="62.0" x2="1103.0" y2="1560.0" stroke="#e8863c" stroke-width="1.2"/>
+<text x="1103.0" y="1594.0" font-size="26" text-anchor="middle" fill="#8a5a2b">41°57'</text>
+<line x1="1335.0" y1="62.0" x2="1335.0" y2="1560.0" stroke="#e8863c" stroke-width="1.2"/>
+<text x="1335.0" y="1594.0" font-size="26" text-anchor="middle" fill="#8a5a2b">41°58'</text>
+<line x1="1567.0" y1="62.0" x2="1567.0" y2="1560.0" stroke="#e8863c" stroke-width="1.2"/>
+<text x="1567.0" y="1594.0" font-size="26" text-anchor="middle" fill="#8a5a2b">41°59'</text>
+<line x1="1799.0" y1="62.0" x2="1799.0" y2="1560.0" stroke="#e8863c" stroke-width="1.2"/>
+<text x="1799.0" y="1594.0" font-size="26" text-anchor="middle" fill="#8a5a2b">42°</text>
+<line x1="68.0" y1="1490.8" x2="1838.0" y2="1490.8" stroke="#e8863c" stroke-width="1.2"/>
+<text x="1848.0" y="1499.8" font-size="26" fill="#8a5a2b">18°0'</text>
+<line x1="68.0" y1="1261.5" x2="1838.0" y2="1261.5" stroke="#e8863c" stroke-width="1.2"/>
+<text x="1848.0" y="1270.5" font-size="26" fill="#8a5a2b">18°1'</text>
+<line x1="68.0" y1="1032.2" x2="1838.0" y2="1032.2" stroke="#e8863c" stroke-width="1.2"/>
+<text x="1848.0" y="1041.2" font-size="26" fill="#8a5a2b">18°2'</text>
+<line x1="68.0" y1="802.9" x2="1838.0" y2="802.9" stroke="#e8863c" stroke-width="1.2"/>
+<text x="1848.0" y="811.9" font-size="26" fill="#8a5a2b">18°3'</text>
+<line x1="68.0" y1="573.6" x2="1838.0" y2="573.6" stroke="#e8863c" stroke-width="1.2"/>
+<text x="1848.0" y="582.6" font-size="26" fill="#8a5a2b">18°4'</text>
+<line x1="68.0" y1="344.3" x2="1838.0" y2="344.3" stroke="#e8863c" stroke-width="1.2"/>
+<text x="1848.0" y="353.3" font-size="26" fill="#8a5a2b">18°5'</text>
+<line x1="68.0" y1="115.0" x2="1838.0" y2="115.0" stroke="#e8863c" stroke-width="1.2"/>
+<text x="1848.0" y="124.0" font-size="26" fill="#8a5a2b">18°6'</text>
+<rect x="68.0" y="62.0" width="1770.0" height="1498.0" fill="none" stroke="#222" stroke-width="3"/>
+<polyline fill="none" stroke="#e01b1b" stroke-width="14" stroke-linejoin="round" points="60.0,1258.0 420.0,1188.0 575.0,1218.0 1105.0,358.0 1232.0,228.0 1545.0,222.0 1810.0,160.0"/>
+<polyline fill="none" stroke="#1b3a1b" stroke-width="5" stroke-linecap="round" points="326.0,1218.0 338.0,1300.0 350.0,1400.0 360.0,1500.0 367.0,1558.0"/>
+<polyline fill="none" stroke="#1b3a1b" stroke-width="5" stroke-linecap="round" points="418.0,1196.0 432.0,1290.0 444.0,1390.0 456.0,1490.0 464.0,1558.0"/>
+<polyline fill="none" stroke="#1b3a1b" stroke-width="5" stroke-linecap="round" points="566.0,1216.3 574.0,1290.0 582.0,1370.0 590.0,1455.0 599.0,1558.0"/>
+<polyline fill="none" stroke="#1b3a1b" stroke-width="5" stroke-linecap="round" points="688.0,1232.0 700.0,1315.0 713.0,1400.0 726.0,1490.0 737.0,1558.0"/>
+<polyline fill="none" stroke="#1b3a1b" stroke-width="5" stroke-linecap="round" points="790.0,1176.0 798.0,1275.0 805.0,1375.0 811.0,1470.0 816.0,1558.0"/>
+<polyline fill="none" stroke="#1b3a1b" stroke-width="5" stroke-linecap="round" points="864.0,1086.0 876.0,1195.0 886.0,1310.0 895.0,1430.0 902.0,1558.0"/>
+<polyline fill="none" stroke="#1b3a1b" stroke-width="5" stroke-linecap="round" points="1083.1,393.5 1078.0,520.0 1072.0,680.0 1064.0,850.0 1056.0,1030.0 1049.0,1220.0 1044.0,1400.0 1040.0,1558.0"/>
+<polyline fill="none" stroke="#1b3a1b" stroke-width="5" stroke-linecap="round" points="1155.8,306.0 1163.0,380.0 1177.0,540.0 1191.0,710.0 1205.0,890.0 1216.0,1050.0 1222.0,1160.0"/>
+<polyline fill="none" stroke="#1b3a1b" stroke-width="5" stroke-linecap="round" points="1298.0,232.0 1310.0,370.0 1322.0,510.0 1332.0,650.0 1339.0,762.0"/>
+<polyline fill="none" stroke="#1b3a1b" stroke-width="5" stroke-linecap="round" points="1426.0,236.0 1443.0,380.0 1458.0,520.0 1472.0,665.0 1483.0,800.0"/>
+<polyline fill="none" stroke="#1b3a1b" stroke-width="5" stroke-linecap="round" points="1558.0,228.0 1573.0,370.0 1586.0,505.0 1598.0,640.0 1607.0,760.0"/>
+<polyline fill="none" stroke="#1b3a1b" stroke-width="5" stroke-linecap="round" points="1688.0,244.0 1701.0,380.0 1712.0,510.0 1721.0,630.0 1727.0,742.0"/>
+<text x="80" y="1640" font-size="30" fill="#222">Digitised faults (SE of the red boundary) - visual interpretation QC overlay</text>
+</svg>

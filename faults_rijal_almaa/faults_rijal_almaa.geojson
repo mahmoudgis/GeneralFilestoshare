@@ -1,0 +1,499 @@
+{
+ "type": "FeatureCollection",
+ "crs": {
+  "type": "name",
+  "properties": {
+   "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+  }
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 1,
+    "NAME": "F01",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 173.5,
+    "LENGTH_M": 2765.8,
+    "CONF": "medium",
+    "METHOD": "Visual interpretation (on-screen digitising)",
+    "NOTE": "N-S trace in the SW strip of the study area, west of Wadi ash Shuqayq"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.894181,
+      18.019828
+     ],
+     [
+      41.895043,
+      18.013868
+     ],
+     [
+      41.895905,
+      18.0066
+     ],
+     [
+      41.896624,
+      17.999331
+     ],
+     [
+      41.897126,
+      17.995116
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 2,
+    "NAME": "F02",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 173.2,
+    "LENGTH_M": 2946.8,
+    "CONF": "medium",
+    "METHOD": "Visual interpretation (on-screen digitising)",
+    "NOTE": "N-S trace passing close to the 7 dip symbol, SW strip"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.90079,
+      18.021428
+     ],
+     [
+      41.901796,
+      18.014595
+     ],
+     [
+      41.902658,
+      18.007327
+     ],
+     [
+      41.90352,
+      18.000058
+     ],
+     [
+      41.904095,
+      17.995116
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 3,
+    "NAME": "F03",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 174.8,
+    "LENGTH_M": 2773.4,
+    "CONF": "high",
+    "METHOD": "Visual interpretation (on-screen digitising)",
+    "NOTE": "Long N-S trace west of Wadi ash Shuqayq, cut by the red boundary at its kink"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.911424,
+      18.019955
+     ],
+     [
+      41.911997,
+      18.014595
+     ],
+     [
+      41.912572,
+      18.00878
+     ],
+     [
+      41.913147,
+      18.002602
+     ],
+     [
+      41.913793,
+      17.995116
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 4,
+    "NAME": "F04",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 172.0,
+    "LENGTH_M": 2661.0,
+    "CONF": "medium",
+    "METHOD": "Visual interpretation (on-screen digitising)",
+    "NOTE": "Short N-S splay parallel to F03"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.920187,
+      18.018811
+     ],
+     [
+      41.921049,
+      18.012778
+     ],
+     [
+      41.921983,
+      18.0066
+     ],
+     [
+      41.922917,
+      18.000058
+     ],
+     [
+      41.923707,
+      17.995116
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 5,
+    "NAME": "F05",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 176.3,
+    "LENGTH_M": 3093.8,
+    "CONF": "high",
+    "METHOD": "Visual interpretation (on-screen digitising)",
+    "NOTE": "N-S trace passing just west of the 55 dip symbol"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.927514,
+      18.022881
+     ],
+     [
+      41.928089,
+      18.015685
+     ],
+     [
+      41.928592,
+      18.008417
+     ],
+     [
+      41.929023,
+      18.001512
+     ],
+     [
+      41.929382,
+      17.995116
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 6,
+    "NAME": "F06",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 175.7,
+    "LENGTH_M": 3826.3,
+    "CONF": "medium",
+    "METHOD": "Visual interpretation (on-screen digitising)",
+    "NOTE": "N-S trace in the dotted granite (gt) unit, south-central sheet"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.93283,
+      18.029423
+     ],
+     [
+      41.933693,
+      18.0215
+     ],
+     [
+      41.934411,
+      18.013141
+     ],
+     [
+      41.935057,
+      18.004419
+     ],
+     [
+      41.93556,
+      17.995116
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 7,
+    "NAME": "F07",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 2.0,
+    "LENGTH_M": 9417.7,
+    "CONF": "high",
+    "METHOD": "Visual interpretation (on-screen digitising)",
+    "NOTE": "Principal N-S fault of the SE sector, traced from the red boundary to the southern neatline near the 41 57' meridian"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.948572,
+      18.079758
+     ],
+     [
+      41.948204,
+      18.070563
+     ],
+     [
+      41.947773,
+      18.058933
+     ],
+     [
+      41.947198,
+      18.046577
+     ],
+     [
+      41.946624,
+      18.033493
+     ],
+     [
+      41.946121,
+      18.019683
+     ],
+     [
+      41.945761,
+      18.0066
+     ],
+     [
+      41.945474,
+      17.995116
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 8,
+    "NAME": "F08",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 175.8,
+    "LENGTH_M": 6920.9,
+    "CONF": "high",
+    "METHOD": "Visual interpretation (on-screen digitising)",
+    "NOTE": "N-S to NNW-SSE trace east of F07, dies out in the granite before the southern edge"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.953793,
+      18.086117
+     ],
+     [
+      41.95431,
+      18.080738
+     ],
+     [
+      41.955316,
+      18.069109
+     ],
+     [
+      41.956322,
+      18.056752
+     ],
+     [
+      41.957328,
+      18.043669
+     ],
+     [
+      41.958118,
+      18.03204
+     ],
+     [
+      41.958549,
+      18.024044
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 9,
+    "NAME": "F09",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 175.8,
+    "LENGTH_M": 4295.0,
+    "CONF": "medium",
+    "METHOD": "Visual interpretation (on-screen digitising)",
+    "NOTE": "Short N-S to NNW-SSE trace, Jibal ash Shams southern slope"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.964009,
+      18.091496
+     ],
+     [
+      41.964871,
+      18.081465
+     ],
+     [
+      41.965733,
+      18.071289
+     ],
+     [
+      41.966451,
+      18.061114
+     ],
+     [
+      41.966954,
+      18.052973
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 10,
+    "NAME": "F10",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 174.6,
+    "LENGTH_M": 4579.2,
+    "CONF": "medium",
+    "METHOD": "Visual interpretation (on-screen digitising)",
+    "NOTE": "N-S to NNW-SSE trace west of Wadi Nadi"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.973204,
+      18.091205
+     ],
+     [
+      41.974425,
+      18.080738
+     ],
+     [
+      41.975503,
+      18.070563
+     ],
+     [
+      41.976509,
+      18.060023
+     ],
+     [
+      41.977299,
+      18.050211
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 11,
+    "NAME": "F11",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 175.1,
+    "LENGTH_M": 4316.1,
+    "CONF": "medium",
+    "METHOD": "Visual interpretation (on-screen digitising)",
+    "NOTE": "N-S to NNW-SSE trace on the eastern flank of Jibal ash Shams"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.982687,
+      18.091787
+     ],
+     [
+      41.983764,
+      18.081465
+     ],
+     [
+      41.984698,
+      18.071653
+     ],
+     [
+      41.98556,
+      18.06184
+     ],
+     [
+      41.986207,
+      18.053118
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 12,
+    "NAME": "F12",
+    "FEATURE": "Fault / lineament",
+    "TREND": "N-S",
+    "STRIKE_DEG": 175.8,
+    "LENGTH_M": 4036.2,
+    "CONF": "low",
+    "METHOD": "Visual interpretation (on-screen digitising)",
+    "NOTE": "Easternmost trace near the sheet margin, poorly defined on the scan"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.992026,
+      18.090624
+     ],
+     [
+      41.99296,
+      18.080738
+     ],
+     [
+      41.99375,
+      18.071289
+     ],
+     [
+      41.994397,
+      18.062567
+     ],
+     [
+      41.994828,
+      18.054427
+     ]
+    ]
+   }
+  }
+ ]
+}
