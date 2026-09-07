@@ -11,12 +11,14 @@
    "type": "Feature",
    "properties": {
     "FID": 1,
-    "SHEET": "41E",
+    "SHEET": "41E-north",
     "NAME": "F01",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 173.5,
     "LENGTH_M": 2765.8,
-    "CONF": "medium"
+    "CONF": "medium",
+    "NOTE": "N-S trace in the SW strip of the study area, west of Wadi ash Shuqayq"
    },
    "geometry": {
     "type": "LineString",
@@ -48,12 +50,14 @@
    "type": "Feature",
    "properties": {
     "FID": 2,
-    "SHEET": "41E",
+    "SHEET": "41E-north",
     "NAME": "F02",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 173.2,
     "LENGTH_M": 2946.8,
-    "CONF": "medium"
+    "CONF": "medium",
+    "NOTE": "N-S trace passing close to the 7 dip symbol, SW strip"
    },
    "geometry": {
     "type": "LineString",
@@ -85,12 +89,14 @@
    "type": "Feature",
    "properties": {
     "FID": 3,
-    "SHEET": "41E",
+    "SHEET": "41E-north",
     "NAME": "F03",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 174.8,
     "LENGTH_M": 2773.4,
-    "CONF": "high"
+    "CONF": "high",
+    "NOTE": "Long N-S trace west of Wadi ash Shuqayq, cut by the red boundary at its kink"
    },
    "geometry": {
     "type": "LineString",
@@ -122,12 +128,14 @@
    "type": "Feature",
    "properties": {
     "FID": 4,
-    "SHEET": "41E",
+    "SHEET": "41E-north",
     "NAME": "F04",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 172.0,
     "LENGTH_M": 2661.0,
-    "CONF": "medium"
+    "CONF": "medium",
+    "NOTE": "Short N-S splay parallel to F03"
    },
    "geometry": {
     "type": "LineString",
@@ -159,12 +167,14 @@
    "type": "Feature",
    "properties": {
     "FID": 5,
-    "SHEET": "41E",
+    "SHEET": "41E-north",
     "NAME": "F05",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 176.3,
     "LENGTH_M": 3093.8,
-    "CONF": "high"
+    "CONF": "high",
+    "NOTE": "N-S trace passing just west of the 55 dip symbol"
    },
    "geometry": {
     "type": "LineString",
@@ -196,12 +206,14 @@
    "type": "Feature",
    "properties": {
     "FID": 6,
-    "SHEET": "41E",
+    "SHEET": "41E-north",
     "NAME": "F06",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 175.7,
     "LENGTH_M": 3826.3,
-    "CONF": "medium"
+    "CONF": "medium",
+    "NOTE": "N-S trace in the dotted granite (gt) unit, south-central sheet"
    },
    "geometry": {
     "type": "LineString",
@@ -233,12 +245,14 @@
    "type": "Feature",
    "properties": {
     "FID": 7,
-    "SHEET": "41E",
+    "SHEET": "41E-north",
     "NAME": "F07",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 2.0,
     "LENGTH_M": 9417.7,
-    "CONF": "high"
+    "CONF": "high",
+    "NOTE": "Principal N-S fault of the SE sector, traced from the red boundary to the southern neatline near the 41 57' meridian"
    },
    "geometry": {
     "type": "LineString",
@@ -282,12 +296,14 @@
    "type": "Feature",
    "properties": {
     "FID": 8,
-    "SHEET": "41E",
+    "SHEET": "41E-north",
     "NAME": "F08",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 175.8,
     "LENGTH_M": 6920.9,
-    "CONF": "high"
+    "CONF": "high",
+    "NOTE": "N-S to NNW-SSE trace east of F07, dies out in the granite before the southern edge"
    },
    "geometry": {
     "type": "LineString",
@@ -327,12 +343,14 @@
    "type": "Feature",
    "properties": {
     "FID": 9,
-    "SHEET": "41E",
+    "SHEET": "41E-north",
     "NAME": "F09",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 175.8,
     "LENGTH_M": 4295.0,
-    "CONF": "medium"
+    "CONF": "medium",
+    "NOTE": "Short N-S to NNW-SSE trace, Jibal ash Shams southern slope"
    },
    "geometry": {
     "type": "LineString",
@@ -364,12 +382,14 @@
    "type": "Feature",
    "properties": {
     "FID": 10,
-    "SHEET": "41E",
+    "SHEET": "41E-north",
     "NAME": "F10",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 174.6,
     "LENGTH_M": 4579.2,
-    "CONF": "medium"
+    "CONF": "medium",
+    "NOTE": "N-S to NNW-SSE trace west of Wadi Nadi"
    },
    "geometry": {
     "type": "LineString",
@@ -401,12 +421,14 @@
    "type": "Feature",
    "properties": {
     "FID": 11,
-    "SHEET": "41E",
+    "SHEET": "41E-north",
     "NAME": "F11",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 175.1,
     "LENGTH_M": 4316.1,
-    "CONF": "medium"
+    "CONF": "medium",
+    "NOTE": "N-S to NNW-SSE trace on the eastern flank of Jibal ash Shams"
    },
    "geometry": {
     "type": "LineString",
@@ -438,12 +460,14 @@
    "type": "Feature",
    "properties": {
     "FID": 12,
-    "SHEET": "41E",
+    "SHEET": "41E-north",
     "NAME": "F12",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 175.8,
     "LENGTH_M": 4036.2,
-    "CONF": "low"
+    "CONF": "low",
+    "NOTE": "Easternmost trace near the sheet margin, poorly defined on the scan"
    },
    "geometry": {
     "type": "LineString",
@@ -477,10 +501,12 @@
     "FID": 13,
     "SHEET": "42E-north",
     "NAME": "F01",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 170.2,
     "LENGTH_M": 11213.9,
-    "CONF": "medium"
+    "CONF": "medium",
+    "NOTE": "NNW-SSE lineament in the bb unit, SW corner of the polygon"
    },
    "geometry": {
     "type": "LineString",
@@ -510,10 +536,12 @@
     "FID": 14,
     "SHEET": "42E-north",
     "NAME": "F02",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 170.1,
     "LENGTH_M": 11222.2,
-    "CONF": "medium"
+    "CONF": "medium",
+    "NOTE": "NNW-SSE lineament west of Wadi ash Shuqayq, SW corner"
    },
    "geometry": {
     "type": "LineString",
@@ -543,10 +571,12 @@
     "FID": 15,
     "SHEET": "42E-north",
     "NAME": "F03",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 169.9,
     "LENGTH_M": 9185.1,
-    "CONF": "low"
+    "CONF": "low",
+    "NOTE": "Short lineament near Jabal Lababah, SW corner"
    },
    "geometry": {
     "type": "LineString",
@@ -576,10 +606,12 @@
     "FID": 16,
     "SHEET": "42E-north",
     "NAME": "F04",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 169.6,
     "LENGTH_M": 40187.7,
-    "CONF": "high"
+    "CONF": "high",
+    "NOTE": "Long fault along the western margin of the as unit"
    },
    "geometry": {
     "type": "LineString",
@@ -625,10 +657,12 @@
     "FID": 17,
     "SHEET": "42E-north",
     "NAME": "F05",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 169.7,
     "LENGTH_M": 39530.9,
-    "CONF": "high"
+    "CONF": "high",
+    "NOTE": "Fault east of F04, cutting the as / bb contact"
    },
    "geometry": {
     "type": "LineString",
@@ -674,10 +708,12 @@
     "FID": 18,
     "SHEET": "42E-north",
     "NAME": "F06",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 170.5,
     "LENGTH_M": 34537.2,
-    "CONF": "high"
+    "CONF": "high",
+    "NOTE": "Western margin of the cross-hatched band inside the as unit"
    },
    "geometry": {
     "type": "LineString",
@@ -719,10 +755,12 @@
     "FID": 19,
     "SHEET": "42E-north",
     "NAME": "F07",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 170.6,
     "LENGTH_M": 33799.0,
-    "CONF": "high"
+    "CONF": "high",
+    "NOTE": "Eastern margin of the cross-hatched band inside the as unit"
    },
    "geometry": {
     "type": "LineString",
@@ -764,10 +802,12 @@
     "FID": 20,
     "SHEET": "42E-north",
     "NAME": "F08",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 170.4,
     "LENGTH_M": 36521.2,
-    "CONF": "high"
+    "CONF": "high",
+    "NOTE": "Fault on the eastern margin of the as unit against bt"
    },
    "geometry": {
     "type": "LineString",
@@ -809,10 +849,12 @@
     "FID": 21,
     "SHEET": "42E-north",
     "NAME": "F09",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 170.8,
     "LENGTH_M": 36354.4,
-    "CONF": "medium"
+    "CONF": "medium",
+    "NOTE": "NNW-SSE fault through the jt / bt units"
    },
    "geometry": {
     "type": "LineString",
@@ -854,10 +896,12 @@
     "FID": 22,
     "SHEET": "42E-north",
     "NAME": "F10",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 171.2,
     "LENGTH_M": 34640.5,
-    "CONF": "medium"
+    "CONF": "medium",
+    "NOTE": "NNW-SSE fault east of F09"
    },
    "geometry": {
     "type": "LineString",
@@ -899,10 +943,12 @@
     "FID": 23,
     "SHEET": "42E-north",
     "NAME": "F11",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 171.1,
     "LENGTH_M": 32138.6,
-    "CONF": "medium"
+    "CONF": "medium",
+    "NOTE": "NNW-SSE fault west of Wadi al Marabi"
    },
    "geometry": {
     "type": "LineString",
@@ -944,10 +990,12 @@
     "FID": 24,
     "SHEET": "42E-north",
     "NAME": "F12",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 171.2,
     "LENGTH_M": 30146.9,
-    "CONF": "medium"
+    "CONF": "medium",
+    "NOTE": "NNW-SSE fault in the bt unit, Wadi al Marabi corridor"
    },
    "geometry": {
     "type": "LineString",
@@ -989,10 +1037,12 @@
     "FID": 25,
     "SHEET": "42E-north",
     "NAME": "F13",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 171.4,
     "LENGTH_M": 26089.7,
-    "CONF": "medium"
+    "CONF": "medium",
+    "NOTE": "NNW-SSE fault east of Wadi al Marabi"
    },
    "geometry": {
     "type": "LineString",
@@ -1030,10 +1080,12 @@
     "FID": 26,
     "SHEET": "42E-north",
     "NAME": "F17",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 171.1,
     "LENGTH_M": 10675.5,
-    "CONF": "low"
+    "CONF": "low",
+    "NOTE": "Short lineament in the central bt unit"
    },
    "geometry": {
     "type": "LineString",
@@ -1063,10 +1115,12 @@
     "FID": 27,
     "SHEET": "42E-north",
     "NAME": "F18",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 169.6,
     "LENGTH_M": 9190.8,
-    "CONF": "low"
+    "CONF": "low",
+    "NOTE": "Short lineament in the south-central part of the polygon"
    },
    "geometry": {
     "type": "LineString",
@@ -1096,10 +1150,12 @@
     "FID": 28,
     "SHEET": "42E-north",
     "NAME": "F19",
+    "FEATURE": "Fault / lineament",
     "TREND": "NNW-SSE",
     "STRIKE_DEG": 168.4,
     "LENGTH_M": 9998.6,
-    "CONF": "medium"
+    "CONF": "medium",
+    "NOTE": "NNW-SSE lineament in the SW part, bb / Qal contact zone"
    },
    "geometry": {
     "type": "LineString",
@@ -1129,10 +1185,12 @@
     "FID": 29,
     "SHEET": "42E-north",
     "NAME": "F20",
+    "FEATURE": "Fault / lineament",
     "TREND": "N-S",
     "STRIKE_DEG": 169.8,
     "LENGTH_M": 13394.9,
-    "CONF": "low"
+    "CONF": "low",
+    "NOTE": "Short lineament between F04 and F05, northern polygon"
    },
    "geometry": {
     "type": "LineString",
@@ -1162,10 +1220,12 @@
     "FID": 30,
     "SHEET": "42E-south",
     "NAME": "W01",
+    "FEATURE": "Fault / lineament",
     "TREND": "NNW-SSE",
     "STRIKE_DEG": 161.3,
     "LENGTH_M": 5802.0,
-    "CONF": "low"
+    "CONF": "low",
+    "NOTE": "Lineament SE of Jabal Lababah, western strip"
    },
    "geometry": {
     "type": "LineString",
@@ -1199,10 +1259,12 @@
     "FID": 31,
     "SHEET": "42E-south",
     "NAME": "W02",
+    "FEATURE": "Fault / lineament",
     "TREND": "NNW-SSE",
     "STRIKE_DEG": 162.7,
     "LENGTH_M": 6559.3,
-    "CONF": "low"
+    "CONF": "low",
+    "NOTE": "Lineament in the gmm granite, central western strip"
    },
    "geometry": {
     "type": "LineString",
@@ -1236,10 +1298,12 @@
     "FID": 32,
     "SHEET": "42E-south",
     "NAME": "W03",
+    "FEATURE": "Fault / lineament",
     "TREND": "NNW-SSE",
     "STRIKE_DEG": 161.4,
     "LENGTH_M": 5260.8,
-    "CONF": "low"
+    "CONF": "low",
+    "NOTE": "Lineament in the Qrs cover near Wadi Jawwah, SW of the strip"
    },
    "geometry": {
     "type": "LineString",
@@ -1269,10 +1333,12 @@
     "FID": 33,
     "SHEET": "42E-south",
     "NAME": "S01",
+    "FEATURE": "Fault / lineament",
     "TREND": "NNW-SSE",
     "STRIKE_DEG": 164.6,
     "LENGTH_M": 12326.5,
-    "CONF": "medium"
+    "CONF": "medium",
+    "NOTE": "NNW-SSE lineament on the western edge of the salient"
    },
    "geometry": {
     "type": "LineString",
@@ -1310,10 +1376,12 @@
     "FID": 34,
     "SHEET": "42E-south",
     "NAME": "S02",
+    "FEATURE": "Fault / lineament",
     "TREND": "NNW-SSE",
     "STRIKE_DEG": 163.9,
     "LENGTH_M": 12371.0,
-    "CONF": "high"
+    "CONF": "high",
+    "NOTE": "NNW-SSE fault bounding the as unit west of the hatched band"
    },
    "geometry": {
     "type": "LineString",
@@ -1351,10 +1419,12 @@
     "FID": 35,
     "SHEET": "42E-south",
     "NAME": "S03",
+    "FEATURE": "Fault / lineament",
     "TREND": "NNW-SSE",
     "STRIKE_DEG": 164.1,
     "LENGTH_M": 12358.8,
-    "CONF": "high"
+    "CONF": "high",
+    "NOTE": "Western margin of the cross-hatched band, Jabal al Hamra"
    },
    "geometry": {
     "type": "LineString",
@@ -1392,10 +1462,12 @@
     "FID": 36,
     "SHEET": "42E-south",
     "NAME": "S04",
+    "FEATURE": "Fault / lineament",
     "TREND": "NNW-SSE",
     "STRIKE_DEG": 163.8,
     "LENGTH_M": 9716.0,
-    "CONF": "medium"
+    "CONF": "medium",
+    "NOTE": "Eastern margin of the cross-hatched band"
    },
    "geometry": {
     "type": "LineString",
@@ -1429,10 +1501,12 @@
     "FID": 37,
     "SHEET": "42E-south",
     "NAME": "S05",
+    "FEATURE": "Fault / lineament",
     "TREND": "NNW-SSE",
     "STRIKE_DEG": 163.7,
     "LENGTH_M": 6557.0,
-    "CONF": "medium"
+    "CONF": "medium",
+    "NOTE": "NNW-SSE fault in the as unit, central salient"
    },
    "geometry": {
     "type": "LineString",
@@ -1462,10 +1536,12 @@
     "FID": 38,
     "SHEET": "42E-south",
     "NAME": "S06",
+    "FEATURE": "Fault / lineament",
     "TREND": "NNW-SSE",
     "STRIKE_DEG": 163.1,
     "LENGTH_M": 4000.7,
-    "CONF": "medium"
+    "CONF": "medium",
+    "NOTE": "NNW-SSE fault east of S05, narrowing part of the salient"
    },
    "geometry": {
     "type": "LineString",
@@ -1491,10 +1567,12 @@
     "FID": 39,
     "SHEET": "42E-south",
     "NAME": "S07",
+    "FEATURE": "Fault / lineament",
     "TREND": "NNW-SSE",
     "STRIKE_DEG": 162.8,
     "LENGTH_M": 1716.1,
-    "CONF": "low"
+    "CONF": "low",
+    "NOTE": "Short lineament close to the eastern red boundary"
    },
    "geometry": {
     "type": "LineString",
@@ -1506,6 +1584,236 @@
      [
       42.341875,
       17.981813
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 40,
+    "SHEET": "41E-coast",
+    "NAME": "N01",
+    "FEATURE": "Fault / lineament",
+    "TREND": "WNW-ESE",
+    "STRIKE_DEG": 110.0,
+    "LENGTH_M": 3596.2,
+    "CONF": "medium",
+    "NOTE": "ENE-WSW lineament in the bhu unit, NE basement corner"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.954656,
+      17.984547
+     ],
+     [
+      41.962369,
+      17.981898
+     ],
+     [
+      41.970083,
+      17.979029
+     ],
+     [
+      41.977796,
+      17.97638
+     ],
+     [
+      41.986612,
+      17.97351
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 41,
+    "SHEET": "41E-coast",
+    "NAME": "N02",
+    "FEATURE": "Fault / lineament",
+    "TREND": "WNW-ESE",
+    "STRIKE_DEG": 111.6,
+    "LENGTH_M": 4010.4,
+    "CONF": "medium",
+    "NOTE": "ENE-WSW lineament north of N01, bhu / gt contact zone"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.960165,
+      17.994923
+     ],
+     [
+      41.96854,
+      17.992053
+     ],
+     [
+      41.976694,
+      17.988742
+     ],
+     [
+      41.986171,
+      17.98521
+     ],
+     [
+      41.995427,
+      17.981678
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 42,
+    "SHEET": "41E-coast",
+    "NAME": "N03",
+    "FEATURE": "Fault / lineament",
+    "TREND": "WNW-ESE",
+    "STRIKE_DEG": 110.1,
+    "LENGTH_M": 3725.2,
+    "CONF": "low",
+    "NOTE": "ENE-WSW lineament in the gt unit south of Jabal Hashahish"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.975592,
+      17.965784
+     ],
+     [
+      41.983967,
+      17.962914
+     ],
+     [
+      41.992121,
+      17.959603
+     ],
+     [
+      42.000275,
+      17.956733
+     ],
+     [
+      42.00865,
+      17.954305
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 43,
+    "SHEET": "41E-coast",
+    "NAME": "N04",
+    "FEATURE": "Fault / lineament",
+    "TREND": "WNW-ESE",
+    "STRIKE_DEG": 112.1,
+    "LENGTH_M": 2215.3,
+    "CONF": "low",
+    "NOTE": "Short ENE-WSW lineament, eastern edge of the sheet geology"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.988815,
+      17.948124
+     ],
+     [
+      41.995427,
+      17.945475
+     ],
+     [
+      42.002039,
+      17.942826
+     ],
+     [
+      42.008209,
+      17.940618
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 44,
+    "SHEET": "41E-coast",
+    "NAME": "N05",
+    "FEATURE": "Fault / lineament",
+    "TREND": "NW-SE",
+    "STRIKE_DEG": 131.0,
+    "LENGTH_M": 1946.4,
+    "CONF": "medium",
+    "NOTE": "Dark elongate dyke-like body west of the gr granite"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.983306,
+      17.928256
+     ],
+     [
+      41.987052,
+      17.925166
+     ],
+     [
+      41.990579,
+      17.922075
+     ],
+     [
+      41.994105,
+      17.919205
+     ],
+     [
+      41.99719,
+      17.916777
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 45,
+    "SHEET": "41E-coast",
+    "NAME": "N06",
+    "FEATURE": "Fault / lineament",
+    "TREND": "WNW-ESE",
+    "STRIKE_DEG": 119.9,
+    "LENGTH_M": 2366.1,
+    "CONF": "low",
+    "NOTE": "Short lineament in the bhu unit, west of the gr granite"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.962369,
+      17.943709
+     ],
+     [
+      41.967218,
+      17.94106
+     ],
+     [
+      41.972287,
+      17.93819
+     ],
+     [
+      41.977135,
+      17.935541
+     ],
+     [
+      41.981763,
+      17.933113
      ]
     ]
    }

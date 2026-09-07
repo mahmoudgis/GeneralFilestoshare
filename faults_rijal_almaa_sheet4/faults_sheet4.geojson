@@ -1,0 +1,235 @@
+{
+ "type": "FeatureCollection",
+ "crs": {
+  "type": "name",
+  "properties": {
+   "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+  }
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 1,
+    "NAME": "N01",
+    "FEATURE": "Fault / lineament",
+    "TREND": "WNW-ESE",
+    "STRIKE_DEG": 110.0,
+    "LENGTH_M": 3596.2,
+    "CONF": "medium",
+    "NOTE": "ENE-WSW lineament in the bhu unit, NE basement corner"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.954656,
+      17.984547
+     ],
+     [
+      41.962369,
+      17.981898
+     ],
+     [
+      41.970083,
+      17.979029
+     ],
+     [
+      41.977796,
+      17.97638
+     ],
+     [
+      41.986612,
+      17.97351
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 2,
+    "NAME": "N02",
+    "FEATURE": "Fault / lineament",
+    "TREND": "WNW-ESE",
+    "STRIKE_DEG": 111.6,
+    "LENGTH_M": 4010.4,
+    "CONF": "medium",
+    "NOTE": "ENE-WSW lineament north of N01, bhu / gt contact zone"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.960165,
+      17.994923
+     ],
+     [
+      41.96854,
+      17.992053
+     ],
+     [
+      41.976694,
+      17.988742
+     ],
+     [
+      41.986171,
+      17.98521
+     ],
+     [
+      41.995427,
+      17.981678
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 3,
+    "NAME": "N03",
+    "FEATURE": "Fault / lineament",
+    "TREND": "WNW-ESE",
+    "STRIKE_DEG": 110.1,
+    "LENGTH_M": 3725.2,
+    "CONF": "low",
+    "NOTE": "ENE-WSW lineament in the gt unit south of Jabal Hashahish"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.975592,
+      17.965784
+     ],
+     [
+      41.983967,
+      17.962914
+     ],
+     [
+      41.992121,
+      17.959603
+     ],
+     [
+      42.000275,
+      17.956733
+     ],
+     [
+      42.00865,
+      17.954305
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 4,
+    "NAME": "N04",
+    "FEATURE": "Fault / lineament",
+    "TREND": "WNW-ESE",
+    "STRIKE_DEG": 112.1,
+    "LENGTH_M": 2215.3,
+    "CONF": "low",
+    "NOTE": "Short ENE-WSW lineament, eastern edge of the sheet geology"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.988815,
+      17.948124
+     ],
+     [
+      41.995427,
+      17.945475
+     ],
+     [
+      42.002039,
+      17.942826
+     ],
+     [
+      42.008209,
+      17.940618
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 5,
+    "NAME": "N05",
+    "FEATURE": "Fault / lineament",
+    "TREND": "NW-SE",
+    "STRIKE_DEG": 131.0,
+    "LENGTH_M": 1946.4,
+    "CONF": "medium",
+    "NOTE": "Dark elongate dyke-like body west of the gr granite"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.983306,
+      17.928256
+     ],
+     [
+      41.987052,
+      17.925166
+     ],
+     [
+      41.990579,
+      17.922075
+     ],
+     [
+      41.994105,
+      17.919205
+     ],
+     [
+      41.99719,
+      17.916777
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "FID": 6,
+    "NAME": "N06",
+    "FEATURE": "Fault / lineament",
+    "TREND": "WNW-ESE",
+    "STRIKE_DEG": 119.9,
+    "LENGTH_M": 2366.1,
+    "CONF": "low",
+    "NOTE": "Short lineament in the bhu unit, west of the gr granite"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      41.962369,
+      17.943709
+     ],
+     [
+      41.967218,
+      17.94106
+     ],
+     [
+      41.972287,
+      17.93819
+     ],
+     [
+      41.977135,
+      17.935541
+     ],
+     [
+      41.981763,
+      17.933113
+     ]
+    ]
+   }
+  }
+ ]
+}
