@@ -30,9 +30,16 @@
         .status-pill { font-size: 10px; padding: 4px 10px; border-radius: 20px; display: flex; align-items: center; gap: 4px; }
         .pulse-active { width: 8px; height: 8px; border-radius: 50%; background-color: #10b981; animation: pulse 1s infinite alternate; }
         @keyframes pulse { from { opacity: 0.4; } to { opacity: 1; } }
-        .kpi { background: white; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 8px 14px; min-width: 110px; }
-        .kpi .v { font-size: 22px; font-weight: 800; color: #065f46; line-height: 1.1; }
-        .kpi .l { font-size: 10px; font-weight: 700; color: #64748b; }
+        .kpi { background: white; border: 1px solid #e2e8f0; border-radius: 0.6rem; padding: 4px 12px; min-width: 92px; display: flex; align-items: baseline; gap: 6px; }
+        .kpi .v { font-size: 17px; font-weight: 800; color: #065f46; line-height: 1.2; white-space: nowrap; }
+        .kpi .l { font-size: 10px; font-weight: 700; color: #64748b; white-space: nowrap; }
+        /* Stats strip folds away while the table is scrolled down */
+        #kpis { max-height: 140px; overflow: hidden; transition: max-height .25s ease, opacity .2s ease, margin .25s ease; }
+        body.compact #kpis { max-height: 0; opacity: 0; margin-top: -8px; }
+        header, header .logo-container, header h1 { transition: all .25s ease; }
+        body.compact header { padding-top: 2px; padding-bottom: 2px; }
+        body.compact header .logo-container { height: 30px; }
+        body.compact header h1 { font-size: 14px; }
         .chip { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 999px; border: 1px solid #d1fae5; background: #f0fdf4; color: #065f46; cursor: pointer; white-space: nowrap; transition: all .15s; }
         .chip:hover { filter: brightness(0.96); }
         .chip.on { background: var(--cs, #047857) !important; color: white !important; border-color: var(--cs, #047857) !important; }
@@ -93,14 +100,14 @@
         </div>
     </header>
 
-    <section class="mx-3 flex flex-wrap items-stretch gap-2">
+    <section id="kpis" class="mx-3 flex flex-wrap items-stretch gap-1.5">
         <div class="kpi"><div class="v" id="k-layers">–</div><div class="l" data-i18n="kLayers"></div></div>
         <div class="kpi"><div class="v" id="k-datasets">–</div><div class="l" data-i18n="kDatasets"></div></div>
         <div class="kpi"><div class="v" id="k-agencies">–</div><div class="l" data-i18n="kAgencies"></div></div>
         <div class="kpi"><div class="v" id="k-folders">–</div><div class="l" data-i18n="kFolders"></div></div>
-        <div class="kpi"><div class="v" id="k-geom" style="font-size:14px">–</div><div class="l" data-i18n="kGeom"></div></div>
-        <div class="kpi"><div class="v" id="k-updated" style="font-size:15px">–</div><div class="l" data-i18n="kUpdated"></div></div>
-        <div class="flex-1 min-w-[300px] bg-white border border-slate-200 rounded-xl px-3 py-2 flex flex-wrap gap-1.5 items-center" id="datasetChips"></div>
+        <div class="kpi"><div class="v" id="k-geom" style="font-size:13px">–</div><div class="l" data-i18n="kGeom"></div></div>
+        <div class="kpi"><div class="v" id="k-updated" style="font-size:13px">–</div><div class="l" data-i18n="kUpdated"></div></div>
+        <div class="w-full bg-white border border-slate-200 rounded-lg px-2 py-1 flex flex-wrap gap-1 items-center" id="datasetChips"></div>
     </section>
 
     <div class="mx-3 flex items-center justify-between bg-white px-2 rounded-xl shadow-sm border border-slate-200 flex-wrap">
@@ -561,6 +568,13 @@
         function stepDrawer(d) { const n = drawerIdx + d; if (n >= 0 && n < shownRows.length) openDrawer(n); }
 
         function setupEventListeners() {
+            // Fold the header and stats strip while reading down the table; bring them back near the top
+            const tc = document.querySelector('.table-container');
+            tc.addEventListener('scroll', () => {
+                const y = tc.scrollTop, c = document.body.classList.contains('compact');
+                if (!c && y > 80) document.body.classList.add('compact');
+                else if (c && y < 10) document.body.classList.remove('compact');
+            }, { passive: true });
             document.getElementById('globalSearch').addEventListener('input', renderActiveTab);
             ['filterDataset', 'filterGeometry', 'filterAgency', 'filterYear'].forEach(id => document.getElementById(id).addEventListener('change', renderActiveTab));
             document.addEventListener('keydown', e => {
