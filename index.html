@@ -48,6 +48,7 @@
         select.f { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 3px 6px; font-size: 10px; font-weight: 700; outline: none; max-width: 180px; }
         .lang-btn { font-size: 12px; font-weight: 800; padding: 6px 12px; border-radius: 8px; border: 1px solid #a7f3d0; background: #ecfdf5; color: #047857; white-space: nowrap; }
         .lang-btn:hover { background: #d1fae5; }
+        #fieldBtn.on { background: #047857; color: white; border-color: #047857; }
         /* Drawer opens from the reading end: left in Arabic, right in English */
         #drawer { position: fixed; top: 0; bottom: 0; left: 0; width: min(520px, 100vw); background: white; box-shadow: 4px 0 24px rgba(0,0,0,.15); transform: translateX(-105%); transition: transform .25s ease; z-index: 60; display: flex; flex-direction: column; }
         html[dir="ltr"] #drawer { left: auto; right: 0; box-shadow: -4px 0 24px rgba(0,0,0,.15); transform: translateX(105%); }
@@ -91,6 +92,19 @@
                    class="w-full ps-10 pe-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:border-emerald-600 focus:ring-0 text-sm outline-none transition-all">
             <div class="absolute inset-y-0 start-0 ps-3 flex items-center pointer-events-none text-slate-400">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </div>
+        </div>
+        <div class="relative" id="fieldWrap">
+            <button id="fieldBtn" onclick="toggleFieldPop(event)" class="lang-btn flex items-center gap-1" style="font-size:11px">
+                <span id="fieldBtnText"></span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div id="fieldPop" class="hidden absolute z-[70] mt-1 bg-white border border-slate-200 rounded-xl shadow-lg p-3 w-64" style="inset-inline-end:0">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-[11px] font-black text-slate-500" data-i18n="searchIn"></span>
+                    <button onclick="clearFields()" class="text-[10px] font-bold text-emerald-700" data-i18n="allFields"></button>
+                </div>
+                <div id="fieldList" class="grid grid-cols-1 gap-1"></div>
             </div>
         </div>
         <div class="flex items-center gap-2">
@@ -191,7 +205,8 @@
                 cDataset: 'القطاع', cLayer: 'اسم الطبقة', cSources: 'المصدر', cDescEn: 'Description (EN)', cDescAr: 'الوصف (عربي)',
                 cCoverage: 'التغطية', cYear: 'السنة', cType: 'النوع', cFolder: 'المجلد', cRaster: 'البيانات الراسترية', cOutputs: 'المخرجات',
                 cDesc: 'الوصف', cSource: 'المصدر', cResolution: 'الدقة',
-                dAgency: 'الجهة', dScale: 'المقياس / الدقة', dProcess: 'المعالجة (Process)', dRemarks: 'ملاحظات (Remarks)', dScaleOnly: 'المقياس'
+                dAgency: 'الجهة', dScale: 'المقياس / الدقة', dProcess: 'المعالجة (Process)', dRemarks: 'ملاحظات (Remarks)', dScaleOnly: 'المقياس',
+                searchIn: 'البحث في الحقول:', allFields: 'كل الحقول', fieldsAll: 'البحث في: كل الحقول', fieldsN: 'البحث في: {n} حقول', fieldsOne: 'البحث في: {f}'
             },
             en: {
                 title: 'GIS Data Dictionary | Al-Jouf Strategic Development Office',
@@ -208,7 +223,8 @@
                 cDataset: 'Dataset', cLayer: 'Layer Name', cSources: 'Sources', cDescEn: 'Description (EN)', cDescAr: 'الوصف (عربي)',
                 cCoverage: 'Coverage', cYear: 'Year', cType: 'Type', cFolder: 'Folder', cRaster: 'Raster Datasets', cOutputs: 'Outputs',
                 cDesc: 'Description', cSource: 'Source', cResolution: 'Resolution',
-                dAgency: 'Agency', dScale: 'Scale / Resolution', dProcess: 'Process', dRemarks: 'Remarks', dScaleOnly: 'Scale'
+                dAgency: 'Agency', dScale: 'Scale / Resolution', dProcess: 'Process', dRemarks: 'Remarks', dScaleOnly: 'Scale',
+                searchIn: 'Search in fields:', allFields: 'All fields', fieldsAll: 'Search in: all fields', fieldsN: 'Search in: {n} fields', fieldsOne: 'Search in: {f}'
             }
         };
         let LANG = 'ar';
@@ -283,6 +299,35 @@
         const isAr = s => /[؀-ۿ]/.test(String(s || ''));
         const val = id => document.getElementById(id).value;
 
+        /* ---------- Search field picker (none ticked = all fields) ---------- */
+        const SEARCH_FIELDS = {
+            layers: [['Layer', 'cLayer'], ['Dataset', 'cDataset'], ['Sources', 'cSources'], ['DescriptionAr', 'cDescAr'], ['Description', 'cDescEn'],
+                     ['Coverage', 'cCoverage'], ['Year', 'cYear'], ['Geometry', 'cType'], ['Scale', 'dScale'], ['Process', 'dProcess'], ['Remarks', 'dRemarks']],
+            source: [['Folder', 'cFolder'], ['RasterDatasets', 'cRaster'], ['Outputs', 'cOutputs'], ['Description', 'cDesc'], ['Source', 'cSource'],
+                     ['Year', 'cYear'], ['Resolution', 'cResolution'], ['Scale', 'dScaleOnly'], ['Coverage', 'cCoverage'], ['Remarks', 'dRemarks']]
+        };
+        const searchFields = { layers: new Set(), source: new Set() };
+        // Text searched for one record: chosen fields only, or every field (incl. Arabic dataset / agency names)
+        function rowText(i) {
+            const sel = searchFields[currentTab];
+            const extra = f => f === 'Dataset' ? ' ' + dsName(i.Dataset) + ' ' + (DATASET_NAME[i.Dataset] || []).join(' ') : '';
+            if (!sel.size) return (Object.values(i).join(' ') + extra('Dataset') + (i._agency ? ' ' + (AG_NAME[i._agency] || []).join(' ') : '')).toLowerCase();
+            return [...sel].map(f => String(i[f] ?? '') + extra(f)).join(' ').toLowerCase();
+        }
+        function renderFieldPicker() {
+            const sel = searchFields[currentTab], list = SEARCH_FIELDS[currentTab];
+            document.getElementById('fieldList').innerHTML = list.map(([f, lk]) =>
+                `<label class="flex items-center gap-2 text-[12px] font-semibold text-slate-700 cursor-pointer hover:bg-emerald-50 rounded px-1 py-0.5">
+                    <input type="checkbox" class="accent-emerald-700" value="${f}" ${sel.has(f) ? 'checked' : ''} onchange="pickField(this)"> ${esc(t(lk))}</label>`).join('');
+            const btn = document.getElementById('fieldBtnText');
+            btn.textContent = !sel.size ? t('fieldsAll') : sel.size === 1 ? t('fieldsOne').replace('{f}', t(list.find(x => x[0] === [...sel][0])[1])) : t('fieldsN').replace('{n}', sel.size);
+            document.getElementById('fieldBtn').classList.toggle('on', sel.size > 0);
+        }
+        function pickField(cb) { const s = searchFields[currentTab]; cb.checked ? s.add(cb.value) : s.delete(cb.value); renderFieldPicker(); renderActiveTab(); }
+        function clearFields() { searchFields[currentTab].clear(); renderFieldPicker(); renderActiveTab(); }
+        function toggleFieldPop(e) { e.stopPropagation(); document.getElementById('fieldPop').classList.toggle('hidden'); }
+        document.addEventListener('click', e => { if (!document.getElementById('fieldWrap').contains(e.target)) document.getElementById('fieldPop').classList.add('hidden'); });
+
         function normYear(v) {
             if (v instanceof Date) return String(v.getFullYear());
             const s = String(v ?? '').trim();
@@ -308,6 +353,7 @@
             document.querySelectorAll('[data-i18n-title]').forEach(el => el.title = t(el.dataset.i18nTitle));
             setStatus(document.getElementById('statusText').dataset.state || 'connecting');
             renderUpdated();
+            renderFieldPicker();
             if (dataStore.layers.length) { buildFilters(); renderKPIs(); renderActiveTab(); }
             else { buildFilters(); }
             if (document.getElementById('drawer').classList.contains('open')) openDrawer(drawerIdx);
@@ -445,6 +491,7 @@
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.getElementById('tab-' + tab).classList.add('active');
             document.getElementById('layerFilters').style.visibility = (tab === 'layers') ? 'visible' : 'hidden';
+            renderFieldPicker();
             renderActiveTab();
         }
 
@@ -502,7 +549,7 @@
                 shownRows = sortRows(dataStore.layers.filter(i =>
                     (dF === 'all' || i.Dataset === dF) && (gF === 'all' || i.Geometry === gF) &&
                     (aF === 'all' || i._agency === aF) && (yF === 'all' || i._year === yF) &&
-                    (!q || Object.values(i).join(' ').toLowerCase().includes(q))));
+                    (!q || rowText(i).includes(q))));
                 const arCell = i => `<td class="clamp text-emerald-800 font-semibold t-rtl"><div>${esc(i.DescriptionAr)}</div></td>`;
                 const enCell = i => `<td class="clamp text-slate-600 t-ltr"><div>${esc(i.Description)}</div></td>`;
                 shownRows.forEach((i, idx) => {
@@ -522,7 +569,7 @@
             } else {
                 head.innerHTML = headRow([['Folder', t('cFolder'), 12], ['RasterDatasets', t('cRaster'), 15], ['Outputs', t('cOutputs'), 8], ['Description', t('cDesc'), 25],
                     ['Source', t('cSource'), 10], ['Year', t('cYear'), 7], ['Resolution', t('cResolution'), 8], ['Coverage', t('cCoverage'), 15]]);
-                shownRows = sortRows(dataStore.source.filter(i => !q || Object.values(i).join(' ').toLowerCase().includes(q)));
+                shownRows = sortRows(dataStore.source.filter(i => !q || rowText(i).includes(q)));
                 shownRows.forEach((i, idx) => {
                     const tr = document.createElement('tr'); tr.onclick = () => openDrawer(idx);
                     tr.innerHTML = `
