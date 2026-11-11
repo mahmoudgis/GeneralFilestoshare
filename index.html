@@ -121,7 +121,6 @@
         <div class="kpi"><div class="v" id="k-agencies">–</div><div class="l" data-i18n="kAgencies"></div></div>
         <div class="kpi"><div class="v" id="k-folders">–</div><div class="l" data-i18n="kFolders"></div></div>
         <div class="kpi"><div class="v" id="k-geom" style="font-size:13px">–</div><div class="l" data-i18n="kGeom"></div></div>
-        <div class="kpi"><div class="v" id="k-updated" style="font-size:13px">–</div><div class="l" data-i18n="kUpdated"></div></div>
         <div class="w-full bg-white border border-slate-200 rounded-lg px-2 py-1 flex flex-wrap gap-1 items-center" id="datasetChips"></div>
     </section>
 
@@ -370,7 +369,7 @@
                 (state === 'error' ? 'bg-red-50 text-red-600' : state === 'connecting' ? 'bg-slate-50 text-slate-400' : 'bg-emerald-50 text-emerald-600');
         }
 
-        window.onload = () => { setupEventListeners(); applyLang(); turboLoadData(); loadUpdatedDate(); };
+        window.onload = () => { setupEventListeners(); applyLang(); turboLoadData(); };
 
         async function loadUpdatedDate() {
             if (LOCAL) { updatedDate = 'local'; renderUpdated(); return; }
@@ -383,6 +382,7 @@
         }
         function renderUpdated() {
             const el = document.getElementById('k-updated');
+            if (!el) return;
             if (updatedDate === 'local') el.textContent = t('localCopy');
             else if (updatedDate instanceof Date) el.textContent = updatedDate.toLocaleDateString(LANG === 'ar' ? 'ar-SA-u-ca-gregory-nu-latn' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
             else el.textContent = '–';
