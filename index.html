@@ -34,6 +34,7 @@
         .kpi .v { font-size: 17px; font-weight: 800; color: #065f46; line-height: 1.2; white-space: nowrap; }
         .kpi .l { font-size: 10px; font-weight: 700; color: #64748b; white-space: nowrap; }
         /* Stats strip folds away while the table is scrolled down */
+        body > header, body > #kpis, body > #toolbar { flex-shrink: 0; }
         #kpis { max-height: 140px; overflow: hidden; transition: max-height .25s ease, opacity .2s ease, margin .25s ease; }
         body.compact #kpis { max-height: 0; opacity: 0; margin-top: -8px; }
         header, header .logo-container, header h1 { transition: all .25s ease; }
@@ -110,7 +111,7 @@
         <div class="w-full bg-white border border-slate-200 rounded-lg px-2 py-1 flex flex-wrap gap-1 items-center" id="datasetChips"></div>
     </section>
 
-    <div class="mx-3 flex items-center justify-between bg-white px-2 rounded-xl shadow-sm border border-slate-200 flex-wrap">
+    <div id="toolbar" class="mx-3 flex items-center justify-between bg-white px-2 rounded-xl shadow-sm border border-slate-200 flex-wrap">
         <nav class="flex">
             <button onclick="switchTab('layers')" id="tab-layers" class="tab-btn active px-6 py-2.5" data-i18n="tabLayers"></button>
             <button onclick="switchTab('source')" id="tab-source" class="tab-btn px-6 py-2.5" data-i18n="tabSource"></button>
