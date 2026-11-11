@@ -159,10 +159,12 @@
         const LAYERS_FILE = "GIS Database - Data Dictionary - Final.xlsx";
         const SOURCE_FILE = "GIS Source Folder - Data Dictionary.xlsx";
         const RAW = f => `https://raw.githubusercontent.com/${REPO}/main/${encodeURIComponent(f)}`;
-        // ?src=local reads the two files from the page's own folder (for checking before upload)
+        // On GitHub Pages the files are read from the same site (refreshed on every publish).
+        // Opened from disk, the page reads them from the repository; ?src=local reads them from the page's own folder.
         const LOCAL = new URLSearchParams(location.search).get('src') === 'local';
-        const LAYERS_URL = LOCAL ? './' + encodeURIComponent(LAYERS_FILE) : RAW(LAYERS_FILE);
-        const SOURCE_URL = LOCAL ? './' + encodeURIComponent(SOURCE_FILE) : RAW(SOURCE_FILE);
+        const SAME_SITE = LOCAL || location.protocol.startsWith('http');
+        const LAYERS_URL = SAME_SITE ? './' + encodeURIComponent(LAYERS_FILE) : RAW(LAYERS_FILE);
+        const SOURCE_URL = SAME_SITE ? './' + encodeURIComponent(SOURCE_FILE) : RAW(SOURCE_FILE);
 
         /* ---------- Interface text ---------- */
         const T = {
