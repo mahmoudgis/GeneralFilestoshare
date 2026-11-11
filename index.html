@@ -5,53 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>قاموس البيانات الجيومكانية | المكتب الاستراتيجي لتطوير منطقة الجوف</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- مكتبة معالجة ملفات الإكسل السحابية -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <style>
+        :root { color-scheme: light; }
         body { font-family: 'Noto Sans Arabic', sans-serif; background-color: #f1f5f9; overflow-x: hidden; height: 100vh; display: flex; flex-direction: column; }
-        
-        /* تحسين استغلال المساحة للجدول بناءً على النسخة المفضلة */
-        .table-container { 
-            flex-grow: 1;
-            overflow-y: auto; 
-            border-radius: 0.75rem;
-            background: white;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            margin: 0 12px 12px 12px;
-        }
-
-        .sticky-header th { 
-            position: sticky; top: 0; 
-            background-color: #047857; /* لون هيئة الجوف الأخضر */
-            color: white;
-            z-index: 50; 
-            font-size: 10px; padding: 10px 4px;
-            text-align: right;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        /* نسق سطر وسطر (Zebra Striping) لسهولة التتبع */
+        html[lang="en"] body { font-family: 'Inter', 'Noto Sans Arabic', sans-serif; }
+        .table-container { flex-grow: 1; overflow-y: auto; border-radius: 0.75rem; background: white; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin: 0 12px 12px 12px; }
+        .sticky-header th { position: sticky; top: 0; background-color: #047857; color: white; z-index: 20; font-size: 10px; padding: 10px 4px; text-align: start; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         tbody tr:nth-child(even) { background-color: #f8fafc; }
         tbody tr:nth-child(odd) { background-color: #ffffff; }
+        tbody tr { cursor: pointer; }
         tbody tr:hover { background-color: #ecfdf5 !important; transition: background 0.1s; }
-
-        /* نظام الاحتواء العمودي (Wrap Text) ومنع التمرير الأفقي إجبارياً */
+        tbody tr.selected { background-color: #d1fae5 !important; }
         table { table-layout: fixed; width: 100%; border-collapse: collapse; }
-        th, td { 
-            padding: 8px 10px; 
-            word-wrap: break-word; 
-            overflow-wrap: break-word; 
-            white-space: normal !important; 
-            vertical-align: top;
-            font-size: 0.72rem;
-            line-height: 1.4;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
+        th, td { padding: 8px 10px; overflow-wrap: break-word; white-space: normal !important; vertical-align: top; font-size: 0.72rem; line-height: 1.4; border-bottom: 1px solid #e2e8f0; }
+        td.clamp > div { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
         .tab-btn { transition: all 0.2s; border-bottom: 3px solid transparent; font-weight: 700; color: #64748b; font-size: 11px; }
         .tab-btn.active { border-color: #047857; color: #047857; background-color: #f0fdf4; }
-
         .logo-container { height: 50px; width: auto; }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
@@ -59,292 +30,553 @@
         .status-pill { font-size: 10px; padding: 4px 10px; border-radius: 20px; display: flex; align-items: center; gap: 4px; }
         .pulse-active { width: 8px; height: 8px; border-radius: 50%; background-color: #10b981; animation: pulse 1s infinite alternate; }
         @keyframes pulse { from { opacity: 0.4; } to { opacity: 1; } }
+        .kpi { background: white; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 8px 14px; min-width: 110px; }
+        .kpi .v { font-size: 22px; font-weight: 800; color: #065f46; line-height: 1.1; }
+        .kpi .l { font-size: 10px; font-weight: 700; color: #64748b; }
+        .chip { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 999px; border: 1px solid #d1fae5; background: #f0fdf4; color: #065f46; cursor: pointer; white-space: nowrap; transition: all .15s; }
+        .chip:hover { filter: brightness(0.96); }
+        .chip.on { background: var(--cs, #047857) !important; color: white !important; border-color: var(--cs, #047857) !important; }
+        .chip .n { opacity: .7; margin-inline-start: 4px; font-weight: 800; }
+        select.f { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 3px 6px; font-size: 10px; font-weight: 700; outline: none; max-width: 180px; }
+        .lang-btn { font-size: 12px; font-weight: 800; padding: 6px 12px; border-radius: 8px; border: 1px solid #a7f3d0; background: #ecfdf5; color: #047857; white-space: nowrap; }
+        .lang-btn:hover { background: #d1fae5; }
+        /* Drawer opens from the reading end: left in Arabic, right in English */
+        #drawer { position: fixed; top: 0; bottom: 0; left: 0; width: min(520px, 100vw); background: white; box-shadow: 4px 0 24px rgba(0,0,0,.15); transform: translateX(-105%); transition: transform .25s ease; z-index: 60; display: flex; flex-direction: column; }
+        html[dir="ltr"] #drawer { left: auto; right: 0; box-shadow: -4px 0 24px rgba(0,0,0,.15); transform: translateX(105%); }
+        #drawer.open, html[dir="ltr"] #drawer.open { transform: translateX(0); }
+        #drawerBackdrop { position: fixed; inset: 0; background: rgba(15,23,42,.25); z-index: 55; display: none; }
+        #drawerBackdrop.open { display: block; }
+        .fld { border-bottom: 1px solid #f1f5f9; padding: 10px 0; }
+        .fld .k { font-size: 10px; font-weight: 800; color: #047857; margin-bottom: 3px; }
+        .fld .val { font-size: 13px; color: #1e293b; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
+        .fld .val.ltr { direction: ltr; text-align: left; }
+        .fld .val.rtl { direction: rtl; text-align: right; }
+        .fld .val a { color: #0369a1; text-decoration: underline; }
+        th.sortable { cursor: pointer; user-select: none; }
+        th.sortable:hover { background-color: #065f46; }
+        th .arr { opacity: .45; font-size: 9px; margin-inline-start: 4px; }
+        th.sorted .arr { opacity: 1; }
+        .ds-tag { display: inline-block; padding: 2px 7px; border-radius: 6px; font-size: 10px; font-weight: 800; }
+        tbody td:first-child { border-inline-start: 4px solid var(--dsc, transparent); }
+        .t-ltr { direction: ltr; text-align: left; }
+        .t-rtl { direction: rtl; text-align: right; }
     </style>
 </head>
 <body class="text-slate-800 antialiased gap-2">
 
-    <!-- Header المدمج (Compact Header) -->
-    <header class="bg-white shadow-sm border-r-4 border-emerald-700 rounded-xl m-3 py-2 px-6 flex items-center justify-between gap-4">
+    <header class="bg-white shadow-sm border-s-4 border-emerald-700 rounded-xl m-3 mb-0 py-2 px-6 flex items-center justify-between gap-4">
         <div class="flex items-center gap-4">
-            <img src="https://stage.maaal.com/storage/old_version/uploads/2022/06/%D8%AA%D8%B7%D9%88%D9%8A%D8%B1-%D9%85%D9%86%D8%B7%D9%82%D8%A9-%D8%A7%D9%84%D8%AC%D9%88%D9%81.jpg" 
-                 alt="شعار هيئة تطوير منطقة الجوف" class="logo-container object-contain"
-                 onerror="this.src='https://maaal.com/wp-content/uploads/2022/06/%D8%AA%D8%B7%D9%88%D9%8A%D8%B1-%D9%8من%D8%B7%D9%82%D8%A9-%D8%A7%D9%84%D8%AC%D9%88%D9%8ف.jpg'">
+            <img src="https://stage.maaal.com/storage/old_version/uploads/2022/06/%D8%AA%D8%B7%D9%88%D9%8A%D8%B1-%D9%85%D9%86%D8%B7%D9%82%D8%A9-%D8%A7%D9%84%D8%AC%D9%88%D9%81.jpg"
+                 alt="JSDO" class="logo-container object-contain" onerror="this.style.display='none'">
             <div>
-                <h1 class="text-lg font-black text-slate-900 leading-tight">المكتب الاستراتيجي لتطوير منطقة الجوف</h1>
+                <h1 class="text-lg font-black text-slate-900 leading-tight" data-i18n="org"></h1>
                 <div class="flex items-center gap-3">
-                    <p class="text-emerald-700 font-bold text-[10px]">قاموس البيانات الجيومكانية | GIS Data Dictionary</p>
+                    <p class="text-emerald-700 font-bold text-[10px]" data-i18n="product"></p>
                     <span id="syncIndicator" class="status-pill bg-slate-50 text-slate-400 font-bold">
-                        <div class="pulse-active"></div> <span id="statusText">جاري الربط...</span>
+                        <div class="pulse-active"></div> <span id="statusText"></span>
                     </span>
                 </div>
             </div>
         </div>
-        
         <div class="flex-grow max-w-xl relative">
-            <input type="text" id="globalSearch" placeholder="ابحث في كافة الحقول..." 
-                   class="w-full pr-10 pl-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:border-emerald-600 focus:ring-0 text-sm outline-none transition-all">
-            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400">
+            <input type="text" id="globalSearch" data-i18n-ph="search"
+                   class="w-full ps-10 pe-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:border-emerald-600 focus:ring-0 text-sm outline-none transition-all">
+            <div class="absolute inset-y-0 start-0 ps-3 flex items-center pointer-events-none text-slate-400">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
             </div>
         </div>
-
-        <button onclick="reloadData()" title="تحديث البيانات" class="p-2 bg-emerald-50 text-emerald-700 rounded-lg hover:bg-emerald-100 transition-all active:scale-95 border border-emerald-100">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
-        </button>
+        <div class="flex items-center gap-2">
+            <button id="langBtn" onclick="toggleLang()" class="lang-btn" data-i18n="switchLang"></button>
+            <button onclick="turboLoadData()" data-i18n-title="reload" class="p-2 bg-emerald-50 text-emerald-700 rounded-lg hover:bg-emerald-100 transition-all active:scale-95 border border-emerald-100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
+            </button>
+        </div>
     </header>
 
-    <!-- Tabs and Mini Filters -->
-    <div class="mx-3 flex items-center justify-between bg-white px-2 rounded-xl shadow-sm border border-slate-200">
+    <section class="mx-3 flex flex-wrap items-stretch gap-2">
+        <div class="kpi"><div class="v" id="k-layers">–</div><div class="l" data-i18n="kLayers"></div></div>
+        <div class="kpi"><div class="v" id="k-datasets">–</div><div class="l" data-i18n="kDatasets"></div></div>
+        <div class="kpi"><div class="v" id="k-agencies">–</div><div class="l" data-i18n="kAgencies"></div></div>
+        <div class="kpi"><div class="v" id="k-folders">–</div><div class="l" data-i18n="kFolders"></div></div>
+        <div class="kpi"><div class="v" id="k-geom" style="font-size:14px">–</div><div class="l" data-i18n="kGeom"></div></div>
+        <div class="kpi"><div class="v" id="k-updated" style="font-size:15px">–</div><div class="l" data-i18n="kUpdated"></div></div>
+        <div class="flex-1 min-w-[300px] bg-white border border-slate-200 rounded-xl px-3 py-2 flex flex-wrap gap-1.5 items-center" id="datasetChips"></div>
+    </section>
+
+    <div class="mx-3 flex items-center justify-between bg-white px-2 rounded-xl shadow-sm border border-slate-200 flex-wrap">
         <nav class="flex">
-            <button onclick="switchTab('layers')" id="tab-layers" class="tab-btn active px-6 py-2.5">الطبقات الجيومكانية (Layers)</button>
-            <button onclick="switchTab('source')" id="tab-source" class="tab-btn px-6 py-2.5">مجلدات المصادر (Source Folder)</button>
+            <button onclick="switchTab('layers')" id="tab-layers" class="tab-btn active px-6 py-2.5" data-i18n="tabLayers"></button>
+            <button onclick="switchTab('source')" id="tab-source" class="tab-btn px-6 py-2.5" data-i18n="tabSource"></button>
         </nav>
-        
-        <div class="flex items-center gap-4 px-4 border-r border-slate-100">
-            <!-- استرجاع منطقة الفلاتر المزدوجة -->
-            <div id="layerFilters" class="flex items-center gap-3">
-                <div class="flex items-center gap-2">
-                    <label class="text-[9px] font-black text-slate-400 uppercase">القطاع:</label>
-                    <select id="filterDataset" class="bg-slate-50 border border-slate-200 rounded-md px-2 py-1 text-[10px] font-bold outline-none min-w-[120px]">
-                        <option value="all">كل القطاعات</option>
-                    </select>
-                </div>
-                <div class="flex items-center gap-2 border-r pr-3 border-slate-100">
-                    <label class="text-[9px] font-black text-slate-400 uppercase">النوع:</label>
-                    <select id="filterGeometry" class="bg-slate-50 border border-slate-200 rounded-md px-2 py-1 text-[10px] font-bold outline-none min-w-[80px]">
-                        <option value="all">الكل</option>
-                    </select>
-                </div>
+        <div class="flex items-center gap-3 px-3 flex-wrap py-1">
+            <div id="layerFilters" class="flex items-center gap-3 flex-wrap">
+                <label class="text-[9px] font-black text-slate-400" data-i18n="fDataset"></label>
+                <select id="filterDataset" class="f"></select>
+                <label class="text-[9px] font-black text-slate-400" data-i18n="fGeom"></label>
+                <select id="filterGeometry" class="f"></select>
+                <label class="text-[9px] font-black text-slate-400" data-i18n="fAgency"></label>
+                <select id="filterAgency" class="f"></select>
+                <label class="text-[9px] font-black text-slate-400" data-i18n="fYear"></label>
+                <select id="filterYear" class="f"></select>
+                <button onclick="clearFilters()" class="text-[10px] font-bold text-slate-500 hover:text-emerald-700" data-i18n="clear"></button>
             </div>
-            
-            <div class="text-right">
-                <span class="text-[8px] font-black text-slate-400 uppercase">السجلات</span>
+            <div class="border-s border-slate-100 ps-3">
+                <span class="text-[8px] font-black text-slate-400" data-i18n="records"></span>
                 <div class="text-base font-black text-emerald-800 leading-none" id="stat-total">0</div>
             </div>
-            <button onclick="exportCSV()" class="bg-slate-800 text-white px-4 py-1.5 rounded-lg text-[9px] font-black hover:bg-emerald-900 transition-all shadow-md">تصدير CSV</button>
+            <button onclick="exportCSV()" class="bg-slate-800 text-white px-4 py-1.5 rounded-lg text-[9px] font-black hover:bg-emerald-900 transition-all shadow-md" data-i18n="csv"></button>
         </div>
     </div>
 
-    <!-- Main Table Container -->
     <div class="table-container shadow-inner">
         <table id="mainTable">
             <thead id="tableHead" class="sticky-header"></thead>
             <tbody id="tableBody">
-                <tr><td colspan="10" class="py-32 text-center text-slate-400 italic font-bold">جاري الربط السحابي المتوازي من GitHub...</td></tr>
+                <tr><td colspan="10" class="py-32 text-center text-slate-400 italic font-bold" data-i18n="loading"></td></tr>
             </tbody>
         </table>
     </div>
 
+    <div id="drawerBackdrop" onclick="closeDrawer()"></div>
+    <aside id="drawer" aria-hidden="true">
+        <div class="bg-emerald-700 text-white px-5 py-4 flex items-start justify-between gap-3">
+            <div class="min-w-0">
+                <div class="text-[10px] font-bold opacity-80" id="d-sub"></div>
+                <div class="text-lg font-black leading-snug t-ltr" id="d-title" style="overflow-wrap:anywhere"></div>
+            </div>
+            <button onclick="closeDrawer()" class="text-white/80 hover:text-white text-2xl leading-none" data-i18n-title="close">×</button>
+        </div>
+        <div class="px-5 py-2 overflow-y-auto flex-1" id="d-body"></div>
+        <div class="px-5 py-3 border-t border-slate-100 flex justify-between text-[11px]">
+            <button onclick="stepDrawer(-1)" class="font-bold text-emerald-700" data-i18n="prev"></button>
+            <span class="text-slate-400" id="d-pos"></span>
+            <button onclick="stepDrawer(1)" class="font-bold text-emerald-700" data-i18n="next"></button>
+        </div>
+    </aside>
+
     <script>
-        const LAYERS_URL = "https://raw.githubusercontent.com/mahmoudgis/GeneralFilestoshare/main/GIS%20Database%20-%20Data%20Dictionary%20-%20Final.xlsx";
-        const SOURCE_URL = "https://raw.githubusercontent.com/mahmoudgis/GeneralFilestoshare/main/GIS%20Source%20Folder%20-%20Data%20Dictionary.xlsx";
-        
+        const REPO = "mahmoudgis/GeneralFilestoshare";
+        const LAYERS_FILE = "GIS Database - Data Dictionary - Final.xlsx";
+        const SOURCE_FILE = "GIS Source Folder - Data Dictionary.xlsx";
+        const RAW = f => `https://raw.githubusercontent.com/${REPO}/main/${encodeURIComponent(f)}`;
+        // ?src=local reads the two files from the page's own folder (for checking before upload)
+        const LOCAL = new URLSearchParams(location.search).get('src') === 'local';
+        const LAYERS_URL = LOCAL ? './' + encodeURIComponent(LAYERS_FILE) : RAW(LAYERS_FILE);
+        const SOURCE_URL = LOCAL ? './' + encodeURIComponent(SOURCE_FILE) : RAW(SOURCE_FILE);
+
+        /* ---------- Interface text ---------- */
+        const T = {
+            ar: {
+                title: 'قاموس البيانات الجيومكانية | المكتب الاستراتيجي لتطوير منطقة الجوف',
+                org: 'المكتب الاستراتيجي لتطوير منطقة الجوف', product: 'قاموس البيانات الجيومكانية | GIS Data Dictionary',
+                search: 'ابحث في كافة الحقول...', switchLang: 'English', reload: 'تحديث البيانات', close: 'إغلاق',
+                kLayers: 'طبقة جيومكانية', kDatasets: 'قطاع (Dataset)', kAgencies: 'جهة مصدر', kFolders: 'مجلد مصدر (راستر)',
+                kGeom: 'مضلع · خط · نقطة', kUpdated: 'آخر تحديث للدليل', localCopy: 'نسخة محلية',
+                tabLayers: 'الطبقات الجيومكانية (Layers)', tabSource: 'مجلدات المصادر (Source Folder)',
+                fDataset: 'القطاع:', fGeom: 'النوع:', fAgency: 'الجهة:', fYear: 'السنة:',
+                allDatasets: 'كل القطاعات', allGeom: 'الكل', allAgencies: 'كل الجهات', allYears: 'كل السنوات',
+                clear: 'مسح الفلاتر', records: 'السجلات', csv: 'تصدير CSV', loading: 'جاري تحميل الدليل...', noRows: 'لا توجد سجلات مطابقة',
+                connecting: 'جاري الربط...', live: 'متصل - بيانات حية', localLive: 'نسخة محلية للمراجعة', error: 'خطأ في الربط',
+                prev: '‹ السابق', next: 'التالي ›', sortHint: 'ترتيب', sourceFolder: 'مجلد مصدر', unspecified: 'غير محدد', others: 'جهات أخرى',
+                cDataset: 'القطاع', cLayer: 'اسم الطبقة', cSources: 'المصدر', cDescEn: 'Description (EN)', cDescAr: 'الوصف (عربي)',
+                cCoverage: 'التغطية', cYear: 'السنة', cType: 'النوع', cFolder: 'المجلد', cRaster: 'البيانات الراسترية', cOutputs: 'المخرجات',
+                cDesc: 'الوصف', cSource: 'المصدر', cResolution: 'الدقة',
+                dAgency: 'الجهة', dScale: 'المقياس / الدقة', dProcess: 'المعالجة (Process)', dRemarks: 'ملاحظات (Remarks)', dScaleOnly: 'المقياس'
+            },
+            en: {
+                title: 'GIS Data Dictionary | Al-Jouf Strategic Development Office',
+                org: 'Al-Jouf Strategic Development Office', product: 'GIS Data Dictionary | قاموس البيانات الجيومكانية',
+                search: 'Search all fields...', switchLang: 'العربية', reload: 'Reload data', close: 'Close',
+                kLayers: 'GIS layers', kDatasets: 'Datasets', kAgencies: 'Source agencies', kFolders: 'Source folders (raster)',
+                kGeom: 'Polygon · Line · Point', kUpdated: 'Dictionary last updated', localCopy: 'Local copy',
+                tabLayers: 'GIS Layers', tabSource: 'Source Folders',
+                fDataset: 'Dataset:', fGeom: 'Type:', fAgency: 'Agency:', fYear: 'Year:',
+                allDatasets: 'All datasets', allGeom: 'All', allAgencies: 'All agencies', allYears: 'All years',
+                clear: 'Clear filters', records: 'Records', csv: 'Export CSV', loading: 'Loading the dictionary...', noRows: 'No matching records',
+                connecting: 'Connecting...', live: 'Connected - live data', localLive: 'Local copy for review', error: 'Connection error',
+                prev: '‹ Previous', next: 'Next ›', sortHint: 'Sort', sourceFolder: 'Source folder', unspecified: 'Not specified', others: 'Other agencies',
+                cDataset: 'Dataset', cLayer: 'Layer Name', cSources: 'Sources', cDescEn: 'Description (EN)', cDescAr: 'الوصف (عربي)',
+                cCoverage: 'Coverage', cYear: 'Year', cType: 'Type', cFolder: 'Folder', cRaster: 'Raster Datasets', cOutputs: 'Outputs',
+                cDesc: 'Description', cSource: 'Source', cResolution: 'Resolution',
+                dAgency: 'Agency', dScale: 'Scale / Resolution', dProcess: 'Process', dRemarks: 'Remarks', dScaleOnly: 'Scale'
+            }
+        };
+        let LANG = 'ar';
+        try { LANG = localStorage.getItem('jouf_dict_lang') || new URLSearchParams(location.search).get('lang') || 'ar'; } catch (e) {}
+        if (!T[LANG]) LANG = 'ar';
+        const t = k => T[LANG][k] ?? k;
+
+        const DATASET_NAME = {
+            Infrastructure: ['البنية التحتية', 'Infrastructure'], Urbanism: ['العمران', 'Urbanism'], Hydrology: ['الهيدرولوجيا', 'Hydrology'],
+            HumanSystems: ['النظم البشرية', 'Human Systems'], Environment: ['البيئة', 'Environment'], Society: ['المجتمع', 'Society'],
+            Economy: ['الاقتصاد', 'Economy'], Topography: ['الطبوغرافيا', 'Topography'], General: ['عام', 'General'],
+            RLP: ['المخطط التنظيمي (تجريبي)', 'Regulatory plan (pilot)']
+        };
+        const dsName = d => (DATASET_NAME[d] || [d, d])[LANG === 'ar' ? 0 : 1];
+        const GEOM_NAME = { PGN: ['مضلع', 'Polygon'], PLN: ['خط', 'Line'], PNT: ['نقطة', 'Point'], Table: ['جدول', 'Table'], Annotation: ['تسميات', 'Annotation'] };
+        const geomName = g => (GEOM_NAME[g] || [g, g])[LANG === 'ar' ? 0 : 1];
+        const DATASET_COLOR = {
+            Infrastructure: ['#B45309', '#FEF3C7'], Urbanism: ['#BE123C', '#FFE4E6'], Hydrology: ['#0369A1', '#E0F2FE'],
+            HumanSystems: ['#7C3AED', '#EDE9FE'], Environment: ['#15803D', '#DCFCE7'], Society: ['#C2410C', '#FFEDD5'],
+            Economy: ['#A16207', '#FEF9C3'], Topography: ['#57534E', '#F5F5F4'], General: ['#475569', '#F1F5F9'], RLP: ['#0F766E', '#CCFBF1']
+        };
+        const dsColor = d => DATASET_COLOR[d] || ['#64748B', '#F1F5F9'];
+        const DS_CANON = Object.fromEntries(Object.keys(DATASET_COLOR).map(k => [k.toLowerCase(), k]));
+        Object.assign(DS_CANON, { environmental: 'Environment', 'human systems': 'HumanSystems', urban: 'Urbanism', hydrological: 'Hydrology' });
+        const canonDs = d => { const s = String(d || '').trim(); return DS_CANON[s.toLowerCase()] || s; };
+
+        // Source text -> agency group (first match wins). Key = the English name.
+        const AGENCIES = [
+            [/sweco/i, 'Sweco', 'Sweco'],
+            [/dar al-?handasa/i, 'أمانة الجوف (دار الهندسة)', 'Al-Jouf Municipality (Dar Al-Handasah)'],
+            [/urban observatory/i, 'أمانة الجوف (المرصد الحضري)', 'Al-Jouf Municipality (Urban Observatory)'],
+            [/abu ajram|hadithah|sub-?municipality/i, 'بلديات فرعية', 'Sub-municipalities'],
+            [/al-?jouf[- ]?municipality|aljouf-municipality|amanat/i, 'أمانة منطقة الجوف', 'Al-Jouf Municipality'],
+            [/momrah|momra|momah|balady/i, 'وزارة البلديات والإسكان', 'Ministry of Municipalities and Housing'],
+            [/\bnwc\b|national water/i, 'شركة المياه الوطنية', 'National Water Company'],
+            [/\bsgs\b|geological survey/i, 'هيئة المساحة الجيولوجية', 'Saudi Geological Survey'],
+            [/geosa|gasgi|survey authority|military survey/i, 'الهيئة العامة للمساحة والمعلومات الجيومكانية', 'GEOSA'],
+            [/mewa|environment, water/i, 'وزارة البيئة والمياه والزراعة', 'Ministry of Environment, Water and Agriculture'],
+            [/gstat|statistic/i, 'الهيئة العامة للإحصاء', 'General Authority for Statistics'],
+            [/\bmim\b|industry and mineral/i, 'وزارة الصناعة والثروة المعدنية', 'Ministry of Industry and Mineral Resources'],
+            [/modon|industrial cities/i, 'هيئة المدن الصناعية', 'MODON'],
+            [/jsdo|\bjso\b|strategic development office|regional development strategy/i, 'المكتب الاستراتيجي لتطوير الجوف', 'JSDO'],
+            [/ministry of tourism/i, 'وزارة السياحة', 'Ministry of Tourism'],
+            [/srca|red crescent/i, 'هيئة الهلال الأحمر', 'Saudi Red Crescent Authority'],
+            [/energy|moenergy/i, 'وزارة الطاقة', 'Ministry of Energy'],
+            [/\bmoi\b|interior|principality|emirate/i, 'وزارة الداخلية / إمارة الجوف', 'Ministry of Interior / Al-Jouf Emirate'],
+            [/wildlife|\bncw\b/i, 'المركز الوطني لتنمية الحياة الفطرية', 'National Center for Wildlife'],
+            [/ministry of health|health affairs|\bmoh\b/i, 'وزارة الصحة', 'Ministry of Health'],
+            [/\bmcit\b|communications/i, 'وزارة الاتصالات وتقنية المعلومات', 'MCIT'],
+            [/mobily|\bstc\b|zain/i, 'شركات الاتصالات', 'Telecom operators'],
+            [/transport|\bmot\b|\bgaca\b|\btga\b|\bsar\b|railway/i, 'قطاع النقل', 'Transport sector'],
+            [/copernicus|cop-?dem|glo-30|srtm|landsat|sentinel|esri|microsoft|\bosm\b|openstreetmap|\bhere\b|nasa|usgs|arcgis hub|google|geonames|\bspot\b/i, 'مصادر مفتوحة وعالمية', 'Open and global sources'],
+            [/ksrnr|itba|royal reserve/i, 'هيئات المحميات الملكية', 'Royal reserve authorities'],
+            [/ncvc|vegetation cover/i, 'المركز الوطني لتنمية الغطاء النباتي', 'National Center for Vegetation Cover'],
+            [/mwan|waste/i, 'المركز الوطني لإدارة النفايات', 'National Center for Waste Management'],
+            [/ncec|environmental compliance/i, 'المركز الوطني للرقابة على الالتزام البيئي', 'National Center for Environmental Compliance'],
+            [/\bsio\b|irrigation/i, 'الهيئة العامة للري', 'Saudi Irrigation Organization'],
+            [/arcgis pro|gis team|saud ?consult|derived|consultant/i, 'فريق GIS (معالجات مشتقة)', 'GIS team (derived)']
+        ];
+        const AG_NAME = Object.fromEntries(AGENCIES.map(a => [a[2], [a[1], a[2]]]));
+        const agencyKey = s => { const v = String(s || ''); for (const [re, , en] of AGENCIES) if (re.test(v)) return en; return v.trim() ? '_others' : '_none'; };
+        const agName = k => k === '_others' ? t('others') : k === '_none' ? t('unspecified') : (AG_NAME[k] || [k, k])[LANG === 'ar' ? 0 : 1];
+
         let dataStore = { layers: [], source: [] };
         let currentTab = 'layers';
+        let shownRows = [], drawerIdx = -1;
+        let sortState = { layers: { key: null, dir: 1 }, source: { key: null, dir: 1 } };
+        let updatedDate = null;
 
-        window.onload = () => {
-            setupEventListeners();
-            turboLoadData();
-        };
+        const esc = v => String(v ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+        const linkify = v => esc(v).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+        const isAr = s => /[؀-ۿ]/.test(String(s || ''));
+        const val = id => document.getElementById(id).value;
 
-        /**
-         * محرك الربط المتوازي لضمان سرعة التحميل القصوى
-         */
-        async function turboLoadData() {
-            const indicator = document.getElementById('statusText');
-            indicator.innerText = "جاري الربط السريع...";
-            
+        function normYear(v) {
+            if (v instanceof Date) return String(v.getFullYear());
+            const s = String(v ?? '').trim();
+            if (!s || s.toUpperCase() === 'NA') return '';
+            const m = s.match(/^(\d{4})-\d{2}-\d{2}/); if (m) return m[1];
+            return s;
+        }
+        function yearBucket(y) {
+            if (!y) return '_none';
+            const g = y.match(/(19|20)\d{2}/g);
+            if (/^\d{4}H/i.test(y)) return y.match(/^\d{4}/)[0] + 'H' + (g ? ` (${g[g.length - 1]})` : '');
+            return g ? g[0] : y;
+        }
+        const yearLabel = b => b === '_none' ? t('unspecified') : (LANG === 'ar' ? b.replace(/^(\d{4})H/, '$1هـ') : b);
+
+        /* ---------- Language ---------- */
+        function applyLang() {
+            document.documentElement.lang = LANG;
+            document.documentElement.dir = LANG === 'ar' ? 'rtl' : 'ltr';
+            document.title = t('title');
+            document.querySelectorAll('[data-i18n]').forEach(el => el.textContent = t(el.dataset.i18n));
+            document.querySelectorAll('[data-i18n-ph]').forEach(el => el.placeholder = t(el.dataset.i18nPh));
+            document.querySelectorAll('[data-i18n-title]').forEach(el => el.title = t(el.dataset.i18nTitle));
+            setStatus(document.getElementById('statusText').dataset.state || 'connecting');
+            renderUpdated();
+            if (dataStore.layers.length) { buildFilters(); renderKPIs(); renderActiveTab(); }
+            else { buildFilters(); }
+            if (document.getElementById('drawer').classList.contains('open')) openDrawer(drawerIdx);
+        }
+        function toggleLang() {
+            LANG = LANG === 'ar' ? 'en' : 'ar';
+            try { localStorage.setItem('jouf_dict_lang', LANG); } catch (e) {}
+            applyLang();
+        }
+        function setStatus(state) {
+            const el = document.getElementById('statusText'); el.dataset.state = state;
+            el.textContent = t(state);
+            document.getElementById('syncIndicator').className = 'status-pill font-bold ' +
+                (state === 'error' ? 'bg-red-50 text-red-600' : state === 'connecting' ? 'bg-slate-50 text-slate-400' : 'bg-emerald-50 text-emerald-600');
+        }
+
+        window.onload = () => { setupEventListeners(); applyLang(); turboLoadData(); loadUpdatedDate(); };
+
+        async function loadUpdatedDate() {
+            if (LOCAL) { updatedDate = 'local'; renderUpdated(); return; }
             try {
-                const [respLayers, respSource] = await Promise.all([
-                    fetch(LAYERS_URL + "?t=" + Date.now()),
-                    fetch(SOURCE_URL + "?t=" + Date.now())
-                ]);
+                const r = await fetch(`https://api.github.com/repos/${REPO}/commits?path=${encodeURIComponent(LAYERS_FILE)}&per_page=1`);
+                const j = await r.json();
+                updatedDate = new Date(j[0].commit.committer.date);
+            } catch (e) { updatedDate = null; }
+            renderUpdated();
+        }
+        function renderUpdated() {
+            const el = document.getElementById('k-updated');
+            if (updatedDate === 'local') el.textContent = t('localCopy');
+            else if (updatedDate instanceof Date) el.textContent = updatedDate.toLocaleDateString(LANG === 'ar' ? 'ar-SA-u-ca-gregory-nu-latn' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+            else el.textContent = '–';
+        }
 
-                const [bufLayers, bufSource] = await Promise.all([
-                    respLayers.arrayBuffer(),
-                    respSource.arrayBuffer()
-                ]);
-
-                const wbLayers = XLSX.read(new Uint8Array(bufLayers), { type: 'array' });
-                dataStore.layers = processSheet(wbLayers, "Layers", "layers");
-
-                const wbSource = XLSX.read(new Uint8Array(bufSource), { type: 'array' });
-                dataStore.source = processSheet(wbSource, "Layers", "source");
-
-                indicator.innerText = "متصل - بيانات حية";
-                document.getElementById('syncIndicator').className = "status-pill bg-emerald-50 text-emerald-600 font-bold";
-                
-                renderActiveTab();
+        async function turboLoadData() {
+            setStatus('connecting');
+            try {
+                const bust = LOCAL ? '' : "?t=" + Date.now();
+                const [rl, rs] = await Promise.all([fetch(LAYERS_URL + bust), fetch(SOURCE_URL + bust)]);
+                if (!rl.ok || !rs.ok) throw new Error('HTTP ' + rl.status + '/' + rs.status);
+                const [bl, bs] = await Promise.all([rl.arrayBuffer(), rs.arrayBuffer()]);
+                dataStore.layers = processSheet(XLSX.read(new Uint8Array(bl), { type: 'array', cellDates: true }), "layers")
+                    .filter(i => i.Dataset && i.Dataset.length < 35 && i.Layer);
+                dataStore.source = processSheet(XLSX.read(new Uint8Array(bs), { type: 'array', cellDates: true }), "source")
+                    .filter(i => i.Folder || i.RasterDatasets);
+                dataStore.layers.forEach(i => { i._agency = agencyKey(i.Sources); i._year = yearBucket(i.Year); });
+                setStatus(LOCAL ? 'localLive' : 'live');
+                buildFilters(); renderKPIs(); renderActiveTab();
             } catch (e) {
                 console.error(e);
-                indicator.innerText = "خطأ في الربط";
-                document.getElementById('syncIndicator').className = "status-pill bg-red-50 text-red-600 font-bold";
+                setStatus('error');
             }
         }
 
-        function processSheet(workbook, sheetName, type) {
-            const ws = workbook.Sheets[sheetName] || workbook.Sheets[workbook.SheetNames[0]];
-            const json = XLSX.utils.sheet_to_json(ws);
-            
-            return json.map(row => {
-                const obj = {};
+        function processSheet(wb, type) {
+            const ws = wb.Sheets["Layers"] || wb.Sheets[wb.SheetNames[0]];
+            return XLSX.utils.sheet_to_json(ws, { defval: '' }).map(row => {
+                const o = {};
                 Object.keys(row).forEach(key => {
-                    const k = key.trim().toLowerCase();
-                    const val = row[key];
+                    const k = key.trim().toLowerCase(); let v = row[key];
+                    if (typeof v === 'string') v = v.trim();
                     if (type === 'layers') {
-                        if (k.includes("dataset")) obj.Dataset = val ? val.toString().trim() : "";
-                        else if (k.includes("layer")) obj.Layer = val;
-                        else if (k.includes("sources")) obj.Sources = val;
-                        else if (k === "description") obj.Description = val;
-                        else if (k.includes("وصف") || k.includes("arabic")) obj.DescriptionAr = val;
-                        else if (k.includes("coverage")) obj.Coverage = val;
-                        else if (k.includes("year")) obj.Year = val;
-                        else if (k.includes("geometry")) obj.Geometry = val;
-                        else if (k.includes("remarks")) obj.Remarks = val;
+                        if (k.includes("dataset")) o.Dataset = canonDs(v);
+                        else if (k === "layer" || k.includes("layer name")) o.Layer = v;
+                        else if (k.includes("sources")) o.Sources = v;
+                        else if (k.includes("scale")) o.Scale = v;
+                        else if (k === "description") o.Description = v;
+                        else if (k.includes("وصف") || k.includes("arabic")) o.DescriptionAr = v;
+                        else if (k.includes("process")) o.Process = v;
+                        else if (k.includes("coverage")) o.Coverage = v;
+                        else if (k.includes("year")) o.Year = normYear(v);
+                        else if (k.includes("geometry")) o.Geometry = String(v);
+                        else if (k.includes("remarks")) o.Remarks = v;
                     } else {
-                        if (k.includes("folder")) obj.Folder = val;
-                        else if (k.includes("raster datasets")) obj.RasterDatasets = val;
-                        else if (k.includes("outputs")) obj.Outputs = val;
-                        else if (k.includes("description")) obj.Description = val;
-                        else if (k.includes("source")) obj.Source = val;
-                        else if (k.includes("year")) obj.Year = val;
-                        else if (k.includes("resolution")) obj.Resolution = val;
-                        else if (k.includes("scale")) obj.Scale = val;
-                        else if (k.includes("coverage")) obj.Coverage = val;
+                        if (k.includes("folder")) o.Folder = v;
+                        else if (k.includes("raster datasets")) o.RasterDatasets = v;
+                        else if (k.includes("outputs")) o.Outputs = v;
+                        else if (k.includes("description")) o.Description = v;
+                        else if (k.includes("source")) o.Source = v;
+                        else if (k.includes("year")) o.Year = normYear(v);
+                        else if (k.includes("resolution")) o.Resolution = v;
+                        else if (k.includes("scale")) o.Scale = v;
+                        else if (k.includes("coverage")) o.Coverage = v;
+                        else if (k.includes("remarks")) o.Remarks = v;
                     }
                 });
-                return obj;
+                return o;
             });
+        }
+
+        const countBy = (arr, f) => arr.reduce((m, x) => (m.set(f(x), (m.get(f(x)) || 0) + 1), m), new Map());
+
+        function renderKPIs() {
+            const L = dataStore.layers;
+            document.getElementById('k-layers').textContent = L.length.toLocaleString('en');
+            document.getElementById('k-datasets').textContent = new Set(L.map(i => i.Dataset)).size;
+            document.getElementById('k-agencies').textContent = new Set(L.map(i => i._agency).filter(a => !a.startsWith('_'))).size;
+            document.getElementById('k-folders').textContent = dataStore.source.length;
+            const g = countBy(L, i => i.Geometry);
+            document.getElementById('k-geom').textContent = `${g.get('PGN') || 0} · ${g.get('PLN') || 0} · ${g.get('PNT') || 0}`;
+            const chips = document.getElementById('datasetChips'); chips.innerHTML = '';
+            [...countBy(L, i => i.Dataset)].sort((a, b) => b[1] - a[1]).forEach(([d, n]) => {
+                const b = document.createElement('button');
+                b.className = 'chip'; b.dataset.ds = d; b.title = d;
+                const [cs, cl] = dsColor(d); b.style.setProperty('--cs', cs); b.style.color = cs; b.style.background = cl; b.style.borderColor = cl;
+                b.innerHTML = `${esc(dsName(d))}<span class="n">${n}</span>`;
+                b.onclick = () => { const s = document.getElementById('filterDataset'); s.value = (s.value === d) ? 'all' : d; if (currentTab !== 'layers') switchTab('layers'); else renderActiveTab(); };
+                chips.appendChild(b);
+            });
+        }
+
+        function fillSelect(id, entries, label) {
+            const s = document.getElementById(id), keep = s.value;
+            s.innerHTML = '';
+            s.add(new Option(label, 'all'));
+            entries.forEach(([v, n, txt]) => s.add(new Option(`${txt} (${n})`, v)));
+            s.value = [...s.options].some(o => o.value === keep) ? keep : 'all';
+        }
+        function buildFilters() {
+            const L = dataStore.layers;
+            fillSelect('filterDataset', [...countBy(L, i => i.Dataset)].sort((a, b) => dsName(a[0]).localeCompare(dsName(b[0]), LANG)).map(([d, n]) => [d, n, LANG === 'ar' ? `${dsName(d)} - ${d}` : dsName(d)]), t('allDatasets'));
+            fillSelect('filterGeometry', [...countBy(L, i => i.Geometry)].filter(([g]) => g).sort((a, b) => b[1] - a[1]).map(([g, n]) => [g, n, `${geomName(g)} (${g})`]), t('allGeom'));
+            fillSelect('filterAgency', [...countBy(L, i => i._agency)].sort((a, b) => b[1] - a[1]).map(([k, n]) => [k, n, agName(k)]), t('allAgencies'));
+            fillSelect('filterYear', [...countBy(L, i => i._year)].sort((a, b) => String(b[0]).localeCompare(String(a[0]))).map(([k, n]) => [k, n, yearLabel(k)]), t('allYears'));
+        }
+
+        function clearFilters() {
+            ['filterDataset', 'filterGeometry', 'filterAgency', 'filterYear'].forEach(id => document.getElementById(id).value = 'all');
+            document.getElementById('globalSearch').value = '';
+            renderActiveTab();
         }
 
         function switchTab(tab) {
             currentTab = tab;
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.getElementById('tab-' + tab).classList.add('active');
-            // إظهار الفلاتر في تبويب الطبقات فقط
             document.getElementById('layerFilters').style.visibility = (tab === 'layers') ? 'visible' : 'hidden';
             renderActiveTab();
         }
 
+        function getGeomClass(g) {
+            const type = String(g || '').toUpperCase();
+            if (type.includes('PNT')) return 'bg-amber-100 text-amber-700';
+            if (type.includes('PGN')) return 'bg-emerald-100 text-emerald-700';
+            if (type.includes('PLN')) return 'bg-blue-100 text-blue-700';
+            return 'bg-slate-100 text-slate-600';
+        }
+
+        // Sortable headers: click toggles ascending / descending / original order
+        function headRow(cols) {
+            const st = sortState[currentTab];
+            return '<tr>' + cols.map(([key, label, w]) => {
+                const on = st.key === key;
+                return `<th class="sortable ${on ? 'sorted' : ''}" style="width:${w}%" onclick="toggleSort('${key}')" title="${t('sortHint')}">${label}<span class="arr">${on ? (st.dir > 0 ? '▲' : '▼') : '⇅'}</span></th>`;
+            }).join('') + '</tr>';
+        }
+        function toggleSort(key) {
+            const st = sortState[currentTab];
+            if (st.key !== key) { st.key = key; st.dir = 1; }
+            else if (st.dir === 1) st.dir = -1;
+            else { st.key = null; st.dir = 1; }
+            renderActiveTab();
+        }
+        const yearNum = y => { const g = String(y || '').match(/(19|20)\d{2}/g); return g ? +g[g.length - 1] : -1; };
+        function sortRows(rows) {
+            const { key, dir } = sortState[currentTab];
+            if (!key) return rows;
+            const coll = new Intl.Collator([LANG, LANG === 'ar' ? 'en' : 'ar'], { numeric: true, sensitivity: 'base' });
+            const show = (r, k) => k === 'Dataset' ? dsName(r[k]) : r[k];
+            return [...rows].sort((a, b) => {
+                const A = show(a, key), B = show(b, key);
+                const ea = A === undefined || A === null || String(A).trim() === '', eb = B === undefined || B === null || String(B).trim() === '';
+                if (ea || eb) return ea - eb;   // empty values always last
+                if (key === 'Year') return (yearNum(A) - yearNum(B)) * dir;
+                return coll.compare(String(A), String(B)) * dir;
+            });
+        }
+
         function renderActiveTab() {
-            const head = document.getElementById('tableHead');
-            const body = document.getElementById('tableBody');
-            const searchTerm = document.getElementById('globalSearch').value.toLowerCase().trim();
+            const head = document.getElementById('tableHead'), body = document.getElementById('tableBody');
+            const q = document.getElementById('globalSearch').value.toLowerCase().trim();
+            const frag = document.createDocumentFragment();
             body.innerHTML = '';
-            
             if (currentTab === 'layers') {
-                head.innerHTML = `<tr>
-                    <th class="col-dataset" style="width:8%">Dataset</th><th class="col-layer" style="width:11%">Layer Name</th>
-                    <th class="col-sources" style="width:9%">Sources</th><th class="col-desc-en" style="width:22%">Description (EN)</th>
-                    <th class="col-desc-ar" style="width:22%">الوصف (عربي)</th><th class="col-coverage" style="width:8%">Coverage</th>
-                    <th class="col-year" style="width:6%">Year</th><th class="col-type" style="width:6%">Type</th><th class="col-remarks" style="width:8%">Remarks</th>
-                </tr>`;
-                
-                const dF = document.getElementById('filterDataset').value.toLowerCase();
-                const gF = document.getElementById('filterGeometry').value;
-                
-                const filtered = dataStore.layers.filter(item => {
-                    const rowStr = Object.values(item).join(' ').toLowerCase();
-                    const matchSearch = rowStr.includes(searchTerm);
-                    const matchD = (dF === 'all' || (item.Dataset && item.Dataset.toLowerCase() === dF));
-                    const matchG = (gF === 'all' || item.Geometry === gF);
-                    return matchSearch && matchD && matchG && item.Dataset && item.Dataset.length < 35 && item.Layer;
+                // The description in the page language comes first
+                const descCols = LANG === 'ar'
+                    ? [['DescriptionAr', t('cDescAr'), 24], ['Description', t('cDescEn'), 24]]
+                    : [['Description', t('cDescEn'), 24], ['DescriptionAr', t('cDescAr'), 24]];
+                head.innerHTML = headRow([['Dataset', t('cDataset'), 8], ['Layer', t('cLayer'), 12], ['Sources', t('cSources'), 10], ...descCols,
+                    ['Coverage', t('cCoverage'), 9], ['Year', t('cYear'), 7], ['Geometry', t('cType'), 6]]);
+                const dF = val('filterDataset'), gF = val('filterGeometry'), aF = val('filterAgency'), yF = val('filterYear');
+                shownRows = sortRows(dataStore.layers.filter(i =>
+                    (dF === 'all' || i.Dataset === dF) && (gF === 'all' || i.Geometry === gF) &&
+                    (aF === 'all' || i._agency === aF) && (yF === 'all' || i._year === yF) &&
+                    (!q || Object.values(i).join(' ').toLowerCase().includes(q))));
+                const arCell = i => `<td class="clamp text-emerald-800 font-semibold t-rtl"><div>${esc(i.DescriptionAr)}</div></td>`;
+                const enCell = i => `<td class="clamp text-slate-600 t-ltr"><div>${esc(i.Description)}</div></td>`;
+                shownRows.forEach((i, idx) => {
+                    const tr = document.createElement('tr'); tr.onclick = () => openDrawer(idx);
+                    const [cs, cl] = dsColor(i.Dataset); tr.style.setProperty('--dsc', cs);
+                    tr.innerHTML = `
+                        <td><span class="ds-tag" style="color:${cs};background:${cl}" title="${esc(i.Dataset)}">${esc(dsName(i.Dataset))}</span></td>
+                        <td class="font-black text-slate-900 t-ltr">${esc(i.Layer)}</td>
+                        <td class="text-[10px] text-slate-500 ${isAr(i.Sources) ? 't-rtl' : 't-ltr'}">${esc(i.Sources)}</td>
+                        ${LANG === 'ar' ? arCell(i) + enCell(i) : enCell(i) + arCell(i)}
+                        <td class="text-center">${esc(i.Coverage)}</td>
+                        <td class="text-center font-bold">${esc(i.Year)}</td>
+                        <td class="text-center"><span class="badge ${getGeomClass(i.Geometry)}" title="${esc(geomName(i.Geometry))}">${esc(i.Geometry)}</span></td>`;
+                    frag.appendChild(tr);
                 });
-
-                document.getElementById('stat-total').innerText = filtered.length;
-                filtered.forEach(item => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td class="font-bold text-slate-400 text-right">${item.Dataset || ''}</td>
-                        <td class="font-black text-slate-900 text-right">${item.Layer || ''}</td>
-                        <td class="text-[10px] text-slate-500 text-right">${item.Sources || ''}</td>
-                        <td class="text-left text-slate-600 font-medium">${item.Description || ''}</td>
-                        <td class="text-emerald-800 font-semibold text-right">${item.DescriptionAr || ''}</td>
-                        <td class="text-center">${item.Coverage || ''}</td>
-                        <td class="text-center font-bold">${item.Year || ''}</td>
-                        <td class="text-center"><span class="badge ${getGeomClass(item.Geometry)} bg-opacity-10">${item.Geometry || ''}</span></td>
-                        <td class="italic text-slate-400 text-[9px] text-right">${item.Remarks || ''}</td>
-                    `;
-                    body.appendChild(row);
-                });
-                updateLayerFilters();
-
-            } else if (currentTab === 'source') {
-                head.innerHTML = `<tr>
-                    <th style="width:12%">Folder</th><th style="width:15%">Raster Datasets</th>
-                    <th style="width:8%">Outputs</th><th style="width:25%">Description</th>
-                    <th style="width:10%">Source</th><th style="width:7%">Year</th>
-                    <th style="width:8%">Resolution</th><th style="width:15%">Coverage</th>
-                </tr>`;
-                
-                const filtered = dataStore.source.filter(item => Object.values(item).join(' ').toLowerCase().includes(searchTerm));
-                document.getElementById('stat-total').innerText = filtered.length;
-
-                filtered.forEach(item => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td class="font-bold text-emerald-700">${item.Folder || ''}</td>
-                        <td class="font-black text-slate-900">${item.RasterDatasets || ''}</td>
-                        <td class="font-bold text-red-600 text-center">${item.Outputs || ''}</td>
-                        <td class="text-slate-600 text-[11px]">${item.Description || ''}</td>
-                        <td class="text-slate-500">${item.Source || ''}</td>
-                        <td class="text-center font-bold">${item.Year || ''}</td>
-                        <td class="text-center text-blue-700 font-black">${item.Resolution || ''}</td>
-                        <td class="text-right text-[10px]">${item.Coverage || ''}</td>
-                    `;
-                    body.appendChild(row);
+                document.querySelectorAll('#datasetChips .chip').forEach(c => c.classList.toggle('on', c.dataset.ds === dF));
+            } else {
+                head.innerHTML = headRow([['Folder', t('cFolder'), 12], ['RasterDatasets', t('cRaster'), 15], ['Outputs', t('cOutputs'), 8], ['Description', t('cDesc'), 25],
+                    ['Source', t('cSource'), 10], ['Year', t('cYear'), 7], ['Resolution', t('cResolution'), 8], ['Coverage', t('cCoverage'), 15]]);
+                shownRows = sortRows(dataStore.source.filter(i => !q || Object.values(i).join(' ').toLowerCase().includes(q)));
+                shownRows.forEach((i, idx) => {
+                    const tr = document.createElement('tr'); tr.onclick = () => openDrawer(idx);
+                    tr.innerHTML = `
+                        <td class="font-bold text-emerald-700 t-ltr">${esc(i.Folder)}</td>
+                        <td class="clamp font-black text-slate-900 t-ltr"><div>${esc(i.RasterDatasets)}</div></td>
+                        <td class="clamp font-bold text-slate-600 text-center"><div>${esc(i.Outputs)}</div></td>
+                        <td class="clamp text-slate-600 text-[11px] ${isAr(i.Description) ? 't-rtl' : 't-ltr'}"><div>${esc(i.Description)}</div></td>
+                        <td class="text-slate-500">${esc(i.Source)}</td>
+                        <td class="text-center font-bold">${esc(i.Year)}</td>
+                        <td class="text-center text-blue-700 font-black">${esc(i.Resolution)}</td>
+                        <td class="text-[10px]">${esc(i.Coverage)}</td>`;
+                    frag.appendChild(tr);
                 });
             }
+            if (!shownRows.length) body.innerHTML = `<tr><td colspan="10" class="py-20 text-center text-slate-400 font-bold">${t('noRows')}</td></tr>`;
+            else body.appendChild(frag);
+            document.getElementById('stat-total').innerText = shownRows.length.toLocaleString('en');
         }
 
-        function updateLayerFilters() {
-            const dFilter = document.getElementById('filterDataset');
-            const gFilter = document.getElementById('filterGeometry');
-            if (dFilter.options.length > 1) return;
-
-            // تحديث فلتر القطاعات
-            const datasetMap = new Map();
-            dataStore.layers.forEach(item => {
-                if (item.Dataset && item.Dataset.length < 35) {
-                    const cleanVal = item.Dataset.trim();
-                    const lowerKey = cleanVal.toLowerCase();
-                    if (!datasetMap.has(lowerKey) || cleanVal[0] === cleanVal[0].toUpperCase()) datasetMap.set(lowerKey, cleanVal);
-                }
-            });
-            Array.from(datasetMap.values()).sort().forEach(d => dFilter.add(new Option(d, d)));
-            
-            // تحديث فلتر الأنواع (Geometry)
-            const geoms = [...new Set(dataStore.layers.map(i => i.Geometry))].filter(Boolean).sort();
-            geoms.forEach(g => gFilter.add(new Option(g, g)));
+        function openDrawer(idx) {
+            drawerIdx = idx; const i = shownRows[idx]; if (!i) return;
+            document.querySelectorAll('#tableBody tr').forEach((tr, k) => tr.classList.toggle('selected', k === idx));
+            const L = currentTab === 'layers';
+            document.getElementById('d-title').textContent = L ? i.Layer : (i.Folder || i.RasterDatasets);
+            document.getElementById('d-sub').textContent = L ? `${dsName(i.Dataset)} · ${geomName(i.Geometry) || ''}` : t('sourceFolder');
+            const descs = LANG === 'ar' ? [[t('cDescAr'), i.DescriptionAr], [t('cDescEn'), i.Description]] : [[t('cDescEn'), i.Description], [t('cDescAr'), i.DescriptionAr]];
+            const F = L ? [
+                ...descs, [t('cSources'), i.Sources], [t('dAgency'), agName(i._agency)],
+                [t('cCoverage'), i.Coverage], [t('cYear'), i.Year], [t('dScale'), i.Scale], [t('dProcess'), i.Process], [t('dRemarks'), i.Remarks]
+            ] : [
+                [t('cFolder'), i.Folder], [t('cRaster'), i.RasterDatasets], [t('cOutputs'), i.Outputs], [t('cDesc'), i.Description],
+                [t('cSource'), i.Source], [t('cYear'), i.Year], [t('cResolution'), i.Resolution], [t('dScaleOnly'), i.Scale], [t('cCoverage'), i.Coverage], [t('dRemarks'), i.Remarks]
+            ];
+            document.getElementById('d-body').innerHTML = F.filter(f => String(f[1] ?? '').trim() && String(f[1]).trim().toUpperCase() !== 'NA')
+                .map(([k, v]) => `<div class="fld"><div class="k">${esc(k)}</div><div class="val ${isAr(v) ? 'rtl' : 'ltr'}">${linkify(v)}</div></div>`).join('');
+            document.getElementById('d-pos').textContent = `${idx + 1} / ${shownRows.length}`;
+            document.getElementById('drawer').classList.add('open');
+            document.getElementById('drawerBackdrop').classList.add('open');
         }
-
-        function getGeomClass(t) {
-            const type = String(t || '').toUpperCase();
-            if(type.includes('PNT')) return 'bg-amber-500 text-amber-700';
-            if(type.includes('PGN') || type.includes('PLY')) return 'bg-emerald-500 text-emerald-700';
-            if(type.includes('PLN') || type.includes('LIN')) return 'bg-blue-500 text-blue-700';
-            return 'bg-slate-500 text-slate-600';
+        function closeDrawer() {
+            document.getElementById('drawer').classList.remove('open');
+            document.getElementById('drawerBackdrop').classList.remove('open');
         }
+        function stepDrawer(d) { const n = drawerIdx + d; if (n >= 0 && n < shownRows.length) openDrawer(n); }
 
         function setupEventListeners() {
             document.getElementById('globalSearch').addEventListener('input', renderActiveTab);
-            document.getElementById('filterDataset').addEventListener('change', renderActiveTab);
-            document.getElementById('filterGeometry').addEventListener('change', renderActiveTab);
+            ['filterDataset', 'filterGeometry', 'filterAgency', 'filterYear'].forEach(id => document.getElementById(id).addEventListener('change', renderActiveTab));
+            document.addEventListener('keydown', e => {
+                if (!document.getElementById('drawer').classList.contains('open')) return;
+                if (e.key === 'Escape') closeDrawer();
+                if (e.key === 'ArrowDown') { e.preventDefault(); stepDrawer(1); }
+                if (e.key === 'ArrowUp') { e.preventDefault(); stepDrawer(-1); }
+            });
         }
 
-        function reloadData() { turboLoadData(); }
-
         function exportCSV() {
-            const data = (currentTab === 'layers') ? dataStore.layers : dataStore.source;
-            if (data.length === 0) return;
-            const headers = Object.keys(data[0]);
+            const data = shownRows.length ? shownRows : (currentTab === 'layers' ? dataStore.layers : dataStore.source);
+            if (!data.length) return;
+            const headers = Object.keys(data[0]).filter(h => !h.startsWith('_'));
             const rows = [headers.join(',')];
-            data.forEach(r => rows.push(headers.map(h => `"${(r[h] || '').toString().replace(/"/g, '""')}"`).join(',')));
-            const blob = new Blob(['\uFEFF' + rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement("a");
-            link.href = URL.createObjectURL(blob);
-            link.download = `Jouf_GIS_${currentTab}.csv`;
-            link.click();
+            data.forEach(r => rows.push(headers.map(h => `"${String(r[h] ?? '').replace(/"/g, '""')}"`).join(',')));
+            const blob = new Blob(['﻿' + rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
+            const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `Jouf_GIS_${currentTab}.csv`; a.click();
         }
     </script>
 </body>
