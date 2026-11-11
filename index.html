@@ -320,7 +320,7 @@
                 `<label class="flex items-center gap-2 text-[12px] font-semibold text-slate-700 cursor-pointer hover:bg-emerald-50 rounded px-1 py-0.5">
                     <input type="checkbox" class="accent-emerald-700" value="${f}" ${sel.has(f) ? 'checked' : ''} onchange="pickField(this)"> ${esc(t(lk))}</label>`).join('');
             const btn = document.getElementById('fieldBtnText');
-            btn.textContent = !sel.size ? t('fieldsAll') : sel.size === 1 ? t('fieldsOne').replace('{f}', t(list.find(x => x[0] === [...sel][0])[1])) : t('fieldsN').replace('{n}', sel.size);
+            btn.textContent = !sel.size ? t('fieldsAll') : sel.size === 1 ? t('fieldsOne').replace('{f}', t(list.find(x => x[0] === [...sel][0])[1])) : (LANG === 'ar' && sel.size === 2) ? 'البحث في: حقلين' : (LANG === 'ar' && sel.size > 10) ? `البحث في: ${sel.size} حقلاً` : t('fieldsN').replace('{n}', sel.size);
             document.getElementById('fieldBtn').classList.toggle('on', sel.size > 0);
         }
         function pickField(cb) { const s = searchFields[currentTab]; cb.checked ? s.add(cb.value) : s.delete(cb.value); renderFieldPicker(); renderActiveTab(); }
